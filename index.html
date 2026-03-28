@@ -927,16 +927,26 @@ body{font-family:'Cairo',sans-serif;background:var(--masheed-white);color:var(--
 </body>
 </html>
 @media print {
-  /* إجبار كل سكشن يبدأ في صفحة جديدة */
-  .section, .cover, .closing {
-    page-break-before: always;
-    break-before: page;
-    border-bottom: none !important; /* شيل الخطوط الفاصلة عشان الطباعة */}
+    /* تحديد حجم الصفحة وتصفير الهوامش */
+    @page {
+      size: A4;
+      margin: 0;}
 
-  /* منع قطع الكروت أو الصور في نص الصفحات */
-  .brand-card, .context-card, .pattern-box {
-    page-break-inside: avoid;
-    break-inside: avoid;}
+    /* إجبار الغلاف والسكاشن والخاتمة على احتلال صفحة كاملة */
+    .cover, .section, .closing {
+      page-break-before: always !important;
+      break-before: page !important;
+      height: 100vh !important; /* يخلي السكشن بطول الصفحة */
+      display: block !important;
+      position: relative !important;}
 
-  /* إخفاء أي عناصر غير ضرورية للطباعة (لو عندك أزرار مثلاً) */nav {
-    position: relative !important;}
+    /* منع أي قطع داخل الكروت */
+    .brand-card, .pattern-box, .context-card {
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;}
+
+    /* تفعيل الألوان في الطباعة */
+    body {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;}
+  }
