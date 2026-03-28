@@ -924,6 +924,19 @@ body{font-family:'Cairo',sans-serif;background:var(--masheed-white);color:var(--
     <div style="margin-top:.75rem;padding-top:.75rem;border-top:1px solid rgba(255,255,255,.08);font-size:.62rem;color:rgba(255,255,255,.2);font-family:'Syne',sans-serif;">v2.0 · 2025 · Masheed Holding · Internal Use Only</div>
   </div>
 </div>
-
 </body>
 </html>
+@media print {
+  /* إجبار كل سكشن يبدأ في صفحة جديدة */
+  .section, .cover, .closing {
+    page-break-before: always;
+    break-before: page;
+    border-bottom: none !important; /* شيل الخطوط الفاصلة عشان الطباعة */}
+
+  /* منع قطع الكروت أو الصور في نص الصفحات */
+  .brand-card, .context-card, .pattern-box {
+    page-break-inside: avoid;
+    break-inside: avoid;}
+
+  /* إخفاء أي عناصر غير ضرورية للطباعة (لو عندك أزرار مثلاً) */nav {
+    position: relative !important;}
