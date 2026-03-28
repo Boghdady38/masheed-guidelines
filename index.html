@@ -13,250 +13,90 @@
     --masheed-light: #F5F4F1;
     --masheed-white: #FEFEFE;
     --masheed-accent: #C8A96E;
-
     --brand-pc: #1A5BBE;
     --brand-sp: #1B6B6A;
-    --brand-bsht: #2C2C2C;
     --brand-sparx: #E84127;
-
     --rule: 1px solid rgba(0,0,0,0.1);
-    --rule-dark: 1px solid rgba(255,255,255,0.12);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Cairo', sans-serif; background: var(--masheed-white); color: var(--masheed-black); line-height: 1.7; }
 
-  body {
-    font-family: 'Cairo', sans-serif;
-    background: var(--masheed-white);
-    color: var(--masheed-black);
-    line-height: 1.7;
-  }
+  /* COVER */
+  .cover { background: var(--masheed-black); color: white; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 0 5vw; border-bottom: 8px solid var(--masheed-accent); }
+  .cover h1 { font-size: clamp(3rem, 10vw, 6rem); font-weight: 900; line-height: 1; }
+  .cover h1 span { color: var(--masheed-accent); }
+  .cover-sub { font-family: 'Syne', sans-serif; font-size: 0.9rem; letter-spacing: 4px; opacity: 0.5; margin-bottom: 2rem; }
 
-  /* ─── COVER ─── */
-  .cover {
-    background: var(--masheed-black);
-    color: white;
-    min-height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    padding: 3rem 5vw;
-    position: relative;
-    overflow: hidden;
-  }
-  .cover-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: var(--rule-dark);
-    padding-bottom: 1.5rem;
-    position: relative;
-    z-index: 1;
-  }
-  .cover-nav .doc-label {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.7rem;
-    color: rgba(255,255,255,0.4);
-    text-transform: uppercase;
-  }
-
-  .cover-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 4rem 0;
-    position: relative;
-    z-index: 1;
-  }
-
-  .cover-title {
-    font-size: clamp(3rem, 8vw, 7rem);
-    font-weight: 800;
-    line-height: 1.05;
-    margin-bottom: 1.5rem;
-  }
-  .cover-title span { color: var(--masheed-accent); }
-
-  .brand-pills {
-    display: flex;
-    gap: 0.75rem;
-    margin-top: 3rem;
-    flex-wrap: wrap;
-  }
-  .pill {
-    padding: 0.45rem 1.1rem;
-    border-radius: 100px;
-    font-size: 0.78rem;
-    font-weight: 600;
-  }
-  .pill-pc { background: var(--brand-pc); color: white; }
-  .pill-sp { background: var(--brand-sp); color: white; }
-  .pill-bsht { background: rgba(255,255,255,0.12); color: white; }
-
-  /* ─── SECTION SHELLS ─── */
+  /* SECTION */
   .section { padding: 6rem 5vw; border-bottom: var(--rule); }
-  .section--white { background: var(--masheed-white); }
-  .section-label { font-family: 'Syne', sans-serif; font-size: 0.7rem; color: var(--masheed-accent); margin-bottom: 0.75rem; display: block; }
-  .section-heading { font-size: clamp(1.8rem, 4vw, 3.2rem); font-weight: 800; margin-bottom: 1.25rem; }
+  .section-label { font-family: 'Syne', sans-serif; font-size: 0.75rem; color: var(--masheed-accent); letter-spacing: 2px; margin-bottom: 1rem; display: block; }
+  .section-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 3rem; }
 
-  /* ─── BRAND HIERARCHY ─── */
-  .sub-brands-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
-    margin-top: 3rem;
-  }
+  /* BRAND GRID */
+  .brand-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+  .brand-card { background: #fff; border: 1px solid #eee; border-radius: 20px; overflow: hidden; transition: 0.3s; }
+  .brand-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+  .brand-visual { height: 200px; display: flex; align-items: center; justify-content: center; padding: 40px; background: #fff; } /* هنا شيلنا السواد */
+  .brand-visual img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  .brand-info { padding: 25px; text-align: center; border-top: 1px solid #f9f9f9; }
+  .brand-info h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 5px; }
 
-  .brand-card {
-    border-radius: 1rem;
-    overflow: hidden;
-    background: white;
-    border: 1px solid rgba(0,0,0,0.06);
-    transition: 0.3s;
-  }
-  .brand-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+  /* PATTERNS */
+  .pattern-box { background: var(--masheed-light); border-radius: 24px; padding: 4rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: center; gap: 40px; }
+  .divider-v { width: 1px; height: 60px; background: rgba(0,0,0,0.1); }
 
-  .brand-card-header {
-    height: 160px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    background: #fff; /* تم إزالة أي خلفيات ملونة أو سوداء هنا */
-  }
-  .brand-card-header img { max-width: 100%; max-height: 100%; object-fit: contain; }
-
-  .brand-card-body { padding: 1.5rem; text-align: center; border-top: 1px solid #f0f0f0; }
-  .brand-card-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
-
-  /* ─── LOGO LOCKUP RULES ─── */
-  .rules-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-  }
-
-  .rule-card { border: 1px solid #eee; border-radius: 1rem; overflow: hidden; }
-  .rule-card-vis { 
-    background: var(--masheed-light); 
-    padding: 3rem; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-    min-height: 200px;
-  }
-  .rule-card-vis img { max-height: 60px; max-width: 100%; }
-  .divider-v { width: 1px; height: 40px; background: rgba(0,0,0,0.15); margin: 0 20px; }
-
-  .rule-card-meta { padding: 1.5rem; background: #fff; }
-
-  /* ─── CLOSING ─── */
-  .closing { background: var(--masheed-black); color: white; padding: 5rem 5vw; display: flex; justify-content: space-between; align-items: center; }
-  .c-title { font-size: 2.5rem; font-weight: 800; }
+  /* CLOSING */
+  .closing { background: var(--masheed-black); color: white; padding: 6rem 5vw; text-align: center; }
+  .closing h2 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; }
 </style>
 </head>
 <body>
 
 <div class="cover">
-  <nav class="cover-nav">
-    <span class="doc-label">Brand Guidelines · دليل الهوية</span>
-    <span class="version">v1.0 — 2026</span>
-  </nav>
-
-  <div class="cover-main">
-    <span class="cover-eyebrow">MASHEED HOLDING · مشيد القابضة</span>
-    <h1 class="cover-title">دليل<br><span>الهوية</span><br>الموحد</h1>
-    <div class="brand-pills">
-      <span class="pill pill-pc">مجتمع المشاريع</span>
-      <span class="pill pill-sp">مشاريع السعودية</span>
-      <span class="pill pill-bsht">بشت</span>
-    </div>
-  </div>
-
-  <div class="cover-footer">
-    <span class="masheed-logo-text">M A S H E E D</span>
-  </div>
+  <div class="cover-sub">MASHEED HOLDING · 2026</div>
+  <h1>دليل<br><span>الهوية</span><br>البصرية</h1>
 </div>
 
-<div class="section section--white">
-  <span class="section-label">BRAND ARCHITECTURE</span>
-  <h2 class="section-heading">هيكل العلامات التجارية</h2>
+<div class="section">
+  <span class="section-label">01 / BRAND ARCHITECTURE</span>
+  <h2 class="section-title">هيكل العلامات التجارية</h2>
   
-  <div class="sub-brands-grid">
+  <div class="brand-grid">
     <div class="brand-card">
-      <div class="brand-card-header"><img src="Projects comm.svg"></div>
-      <div class="brand-card-body">
-        <div class="brand-card-title">مجتمع المشاريع</div>
-        <p style="font-size:0.8rem; color:#666;">Projects Community</p>
-      </div>
+      <div class="brand-visual"><img src="Projects comm.svg"></div>
+      <div class="brand-info"><h3>مجتمع المشاريع</h3></div>
     </div>
-
     <div class="brand-card">
-      <div class="brand-card-header"><img src="Ar logo white BG.svg"></div>
-      <div class="brand-card-body">
-        <div class="brand-card-title">مشاريع السعودية</div>
-        <p style="font-size:0.8rem; color:#666;">Saudi Projects</p>
-      </div>
+      <div class="brand-visual"><img src="Ar logo white BG.svg"></div>
+      <div class="brand-info"><h3>مشاريع السعودية</h3></div>
     </div>
-
     <div class="brand-card">
-      <div class="brand-card-header"><img src="Bisht.svg"></div>
-      <div class="brand-card-body">
-        <div class="brand-card-title">بشت</div>
-        <p style="font-size:0.8rem; color:#666;">Bsht</p>
-      </div>
+      <div class="brand-visual"><img src="Bisht.svg"></div>
+      <div class="brand-info"><h3>بشت</h3></div>
     </div>
-
     <div class="brand-card">
-      <div class="brand-card-header"><img src="Asset 13.svg"></div>
-      <div class="brand-card-body">
-        <div class="brand-card-title">أصول سباركس</div>
-        <p style="font-size:0.8rem; color:#666;">SPARX</p>
-      </div>
+      <div class="brand-visual"><img src="Asset 13.svg"></div>
+      <div class="brand-info"><h3>سباركس</h3></div>
     </div>
   </div>
 </div>
 
-<div class="section section--white">
-  <span class="section-label">LOGO LOCKUP RULES</span>
-  <h2 class="section-heading">قواعد التنسيق (الأنماط)</h2>
+<div class="section">
+  <span class="section-label">02 / USAGE CONTEXTS</span>
+  <h2 class="section-title">قواعد التنسيق (Patterns)</h2>
 
-  <div class="rules-grid">
-    <div class="rule-card">
-      <div class="rule-card-vis">
-        <img src="Logo with slogan.svg" style="max-height: 40px;">
-        <div class="divider-v"></div>
-        <img src="Ar logo white BG.svg">
-      </div>
-      <div class="rule-card-meta">
-        <div style="font-weight:700;">النمط B — الظهور المتوازي</div>
-        <p style="font-size:0.8rem; color:#666; margin-top:5px;">يُستخدم عندما تتساوى القوة البصرية لمشيد مع العلامة التابعة.</p>
-      </div>
-    </div>
-
-    <div class="rule-card">
-      <div class="rule-card-vis">
-        <div style="text-align:center;">
-          <p style="font-size:10px; color:#999; margin-bottom:10px;">POWERED BY</p>
-          <img src="Asset 13.svg" style="max-height:50px;">
-        </div>
-      </div>
-      <div class="rule-card-meta">
-        <div style="font-weight:700;">النمط D — التظهير الراعي</div>
-        <p style="font-size:0.8rem; color:#666; margin-top:5px;">يُطبق على مشاريع الفعاليات المستقلة (مثل سباركس).</p>
-      </div>
-    </div>
+  <div class="pattern-box">
+    <img src="Logo with slogan.svg" style="height: 45px;">
+    <div class="divider-v"></div>
+    <img src="Ar logo white BG.svg" style="height: 45px;">
   </div>
+  <p style="text-align:center; color: #666;">النمط B: الظهور المتوازي بين القابضة والعلامة التابعة.</p>
 </div>
 
 <div class="closing">
-  <div class="c-text">
-    <div class="c-title">هوية واحدة<br>أربع أصوات</div>
-    <p style="opacity:0.5; margin-top:10px;">مشيد القابضة — نبني علامات تتحدث بلغة جمهورها</p>
-  </div>
-  <div style="text-align:left;">
-    <p style="font-size:0.8rem; opacity:0.4;">Creative Lead: Mohamed Elboghdady</p>
-  </div>
+  <h2>هوية واحدة<br>أربع أصوات</h2>
+  <p style="opacity:0.5;">Creative Lead: Mohamed Elboghdady</p>
 </div>
 
 </body>
