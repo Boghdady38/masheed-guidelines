@@ -4,99 +4,925 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>دليل هوية مشيد القابضة</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --masheed-black: #111111;
-    --masheed-dark: #1A1A1A;
-    --masheed-gray: #6B6B6B;
-    --masheed-light: #F5F4F1;
-    --masheed-white: #FEFEFE;
-    --masheed-accent: #C8A96E;
-    --brand-pc: #1A5BBE;
-    --brand-sp: #1B6B6A;
-    --brand-sparx: #E84127;
-    --rule: 1px solid rgba(0,0,0,0.1);
-  }
+:root {
+  --masheed-black: #111111;
+  --masheed-gray: #6B6B6B;
+  --masheed-light: #F5F4F1;
+  --masheed-white: #FEFEFE;
+  --masheed-accent: #C8A96E;
+  --brand-pc: #1A5BBE;
+  --brand-sp: #1B6B6A;
+  --brand-bsht: #2C2C2C;
+  --brand-sparx: #E84127;
+  --ok: #1CB87A;
+  --no: #E84127;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Cairo',sans-serif;background:var(--masheed-white);color:var(--masheed-black);line-height:1.7;}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Cairo', sans-serif; background: var(--masheed-white); color: var(--masheed-black); line-height: 1.7; }
+.cover{background:var(--masheed-black);color:white;min-height:100vh;display:grid;grid-template-rows:auto 1fr auto;padding:3rem 5vw;position:relative;overflow:hidden;}
+.cover::before{content:'';position:absolute;top:-20%;left:-10%;width:60vw;height:60vw;border-radius:50%;background:radial-gradient(circle,rgba(200,169,110,.07) 0%,transparent 70%);pointer-events:none;}
+.cover-nav{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.12);padding-bottom:1.5rem;position:relative;z-index:1;}
+.doc-label{font-family:'Syne',sans-serif;font-size:.7rem;letter-spacing:.2em;color:rgba(255,255,255,.4);text-transform:uppercase;}
+.cover-main{display:flex;flex-direction:column;justify-content:center;padding:4rem 0;position:relative;z-index:1;}
+.cover-eyebrow{font-size:.8rem;color:var(--masheed-accent);letter-spacing:.15em;font-weight:500;margin-bottom:2rem;font-family:'Syne',sans-serif;}
+.cover-title{font-size:clamp(3rem,8vw,7rem);font-weight:800;line-height:1.05;letter-spacing:-.02em;margin-bottom:1.5rem;}
+.cover-title span{color:var(--masheed-accent);}
+.cover-sub{font-size:1.1rem;color:rgba(255,255,255,.55);max-width:480px;font-weight:300;}
+.brand-pills{display:flex;gap:.75rem;margin-top:3rem;flex-wrap:wrap;}
+.pill{padding:.45rem 1.1rem;border-radius:100px;font-size:.78rem;font-weight:600;}
+.pill-pc{background:var(--brand-pc);color:white;}
+.pill-sp{background:var(--brand-sp);color:white;}
+.pill-bsht{background:rgba(255,255,255,.12);color:white;border:1px solid rgba(255,255,255,.2);}
+.pill-sparx{background:var(--brand-sparx);color:white;}
+.cover-footer{display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid rgba(255,255,255,.12);padding-top:1.5rem;position:relative;z-index:1;font-size:.78rem;color:rgba(255,255,255,.3);}
+.masheed-logo-text{font-size:1.4rem;font-weight:700;color:white;letter-spacing:-.02em;}
 
-  /* COVER */
-  .cover { background: var(--masheed-black); color: white; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 0 5vw; border-bottom: 8px solid var(--masheed-accent); }
-  .cover h1 { font-size: clamp(3rem, 10vw, 6rem); font-weight: 900; line-height: 1; }
-  .cover h1 span { color: var(--masheed-accent); }
-  .cover-sub { font-family: 'Syne', sans-serif; font-size: 0.9rem; letter-spacing: 4px; opacity: 0.5; margin-bottom: 2rem; }
+.section{padding:5rem 5vw;border-bottom:1px solid rgba(0,0,0,.08);}
+.section--dark{background:var(--masheed-black);color:white;border-bottom:1px solid rgba(255,255,255,.08);}
+.section--light{background:var(--masheed-light);}
+.section-label{font-family:'Syne',sans-serif;font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--masheed-accent);margin-bottom:.75rem;display:block;}
+.section-heading{font-size:clamp(1.8rem,4vw,3rem);font-weight:800;line-height:1.15;letter-spacing:-.025em;margin-bottom:1.25rem;}
+.section-intro{font-size:1rem;color:var(--masheed-gray);max-width:600px;line-height:1.75;}
+.section--dark .section-intro{color:rgba(255,255,255,.55);}
+.page-marker{font-size:.65rem;font-family:'Syne',sans-serif;color:rgba(0,0,0,.2);letter-spacing:.1em;margin-bottom:2rem;text-align:left;}
+.section--dark .page-marker{color:rgba(255,255,255,.2);}
 
-  /* SECTION */
-  .section { padding: 6rem 5vw; border-bottom: var(--rule); }
-  .section-label { font-family: 'Syne', sans-serif; font-size: 0.75rem; color: var(--masheed-accent); letter-spacing: 2px; margin-bottom: 1rem; display: block; }
-  .section-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 3rem; }
+.callout{background:rgba(200,169,110,.08);border-right:3px solid var(--masheed-accent);border-radius:0 .5rem .5rem 0;padding:1.25rem 1.5rem;margin-top:2rem;font-size:.85rem;line-height:1.7;}
+.callout strong{color:var(--masheed-accent);}
+.section--dark .callout{background:rgba(200,169,110,.07);color:rgba(255,255,255,.8);}
 
-  /* BRAND GRID */
-  .brand-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-  .brand-card { background: #fff; border: 1px solid #eee; border-radius: 20px; overflow: hidden; transition: 0.3s; }
-  .brand-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-  .brand-visual { height: 200px; display: flex; align-items: center; justify-content: center; padding: 40px; background: #fff; } /* هنا شيلنا السواد */
-  .brand-visual img { max-width: 100%; max-height: 100%; object-fit: contain; }
-  .brand-info { padding: 25px; text-align: center; border-top: 1px solid #f9f9f9; }
-  .brand-info h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 5px; }
+/* Brand hierarchy */
+.holding-card{background:var(--masheed-black);color:white;padding:2.5rem 3rem;border-radius:1rem;display:flex;justify-content:space-between;align-items:center;margin-top:2rem;flex-wrap:wrap;gap:1.5rem;}
+.h-label{font-size:.7rem;color:var(--masheed-accent);letter-spacing:.2em;font-family:'Syne',sans-serif;margin-bottom:.5rem;}
+.h-name{font-size:2.2rem;font-weight:800;letter-spacing:-.02em;}
+.h-desc{font-size:.85rem;color:rgba(255,255,255,.5);margin-top:.4rem;max-width:320px;}
+.h-badge{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:.5rem;padding:.75rem 1.5rem;font-size:.75rem;color:rgba(255,255,255,.5);text-align:center;}
+.h-badge strong{display:block;font-size:1.1rem;color:white;font-weight:700;}
+.connector-line{display:flex;align-items:center;justify-content:center;gap:.5rem;color:var(--masheed-gray);font-size:.75rem;margin:1.25rem 0;}
+.connector-line::before,.connector-line::after{content:'';flex:1;height:1px;background:currentColor;opacity:.3;}
+.sub-brands-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;}
+.brand-card{border-radius:1rem;overflow:hidden;}
+.brand-card-header{padding:2rem 2rem 1.5rem;}
+.brand-card-pc .brand-card-header{background:#EEF4FF;}
+.brand-card-sp .brand-card-header{background:#EAF3F3;}
+.brand-card-bsht .brand-card-header{background:#F0EFEE;}
+.brand-card-sparx .brand-card-header{background:#FEF0EC;}
+.brand-color-dot{width:10px;height:10px;border-radius:50%;margin-bottom:1rem;}
+.dot-pc{background:var(--brand-pc)}.dot-sp{background:var(--brand-sp)}.dot-bsht{background:var(--brand-bsht)}.dot-sparx{background:var(--brand-sparx)}
+.brand-card-title{font-size:1.1rem;font-weight:700;margin-bottom:.2rem;}
+.brand-card-en{font-size:.7rem;font-family:'Syne',sans-serif;color:var(--masheed-gray);letter-spacing:.08em;}
+.brand-card-body{padding:1.25rem 2rem 1.75rem;background:white;border:1px solid rgba(0,0,0,.06);border-top:none;border-bottom-left-radius:1rem;border-bottom-right-radius:1rem;}
+.brand-type-tag{display:inline-block;font-size:.62rem;font-weight:600;letter-spacing:.1em;padding:.2rem .65rem;border-radius:100px;margin-bottom:.75rem;font-family:'Syne',sans-serif;}
+.tag-pc{background:rgba(26,91,190,.1);color:var(--brand-pc)}
+.tag-sp{background:rgba(27,107,106,.1);color:var(--brand-sp)}
+.tag-bsht{background:rgba(44,44,44,.08);color:var(--brand-bsht)}
+.tag-sparx{background:rgba(232,65,39,.1);color:var(--brand-sparx)}
+.brand-card-desc{font-size:.82rem;color:var(--masheed-gray);line-height:1.65;}
 
-  /* PATTERNS */
-  .pattern-box { background: var(--masheed-light); border-radius: 24px; padding: 4rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: center; gap: 40px; }
-  .divider-v { width: 1px; height: 60px; background: rgba(0,0,0,0.1); }
+.palette-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.25rem;margin-top:2.5rem;}
+.color-swatch{border-radius:.75rem;overflow:hidden;border:1px solid rgba(0,0,0,.07);}
+.swatch-color{height:90px;}
+.swatch-info{padding:.8rem 1rem;background:white;}
+.swatch-name{font-size:.78rem;font-weight:700;margin-bottom:.15rem;}
+.swatch-hex{font-size:.68rem;color:var(--masheed-gray);font-family:'Syne',sans-serif;}
+.swatch-brand{font-size:.62rem;color:rgba(0,0,0,.35);margin-top:.2rem;}
 
-  /* CLOSING */
-  .closing { background: var(--masheed-black); color: white; padding: 6rem 5vw; text-align: center; }
-  .closing h2 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; }
+/* Examples */
+.example-block{margin-top:3rem;}
+.example-block-title{font-size:.75rem;font-weight:700;letter-spacing:.1em;font-family:'Syne',sans-serif;color:var(--masheed-gray);margin-bottom:1.25rem;padding-bottom:.6rem;border-bottom:1px solid rgba(0,0,0,.08);text-transform:uppercase;}
+.section--dark .example-block-title{color:rgba(255,255,255,.35);border-bottom-color:rgba(255,255,255,.08);}
+.example-pair{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2.5rem;}
+@media(max-width:700px){.example-pair{grid-template-columns:1fr;}}
+.ex-card{border-radius:1rem;overflow:hidden;}
+.ex-label{padding:.55rem 1rem;font-size:.68rem;font-weight:700;letter-spacing:.08em;font-family:'Syne',sans-serif;display:flex;align-items:center;gap:.4rem;}
+.ex-label--ok{background:var(--ok);color:white;}
+.ex-label--no{background:var(--no);color:white;}
+.ex-vis{padding:2rem;display:flex;align-items:center;justify-content:center;min-height:160px;position:relative;}
+.ex-vis--light{background:var(--masheed-light);}
+.ex-vis--dark{background:#1A1A1A;}
+.ex-vis--white{background:white;border:1px solid rgba(0,0,0,.07);}
+.ex-note{padding:1rem 1.25rem;background:white;border:1px solid rgba(0,0,0,.06);border-top:none;border-bottom-left-radius:1rem;border-bottom-right-radius:1rem;font-size:.75rem;color:var(--masheed-gray);line-height:1.55;}
+.no-overlay{position:absolute;inset:0;background:rgba(232,65,39,.04);border:2px solid rgba(232,65,39,.3);border-radius:inherit;pointer-events:none;}
+.ok-overlay{position:absolute;inset:0;background:rgba(28,184,122,.03);border:2px solid rgba(28,184,122,.2);border-radius:inherit;pointer-events:none;}
+
+/* Logo atoms */
+.lm{display:inline-flex;align-items:center;justify-content:center;font-weight:700;padding:.4rem .9rem;border-radius:.35rem;font-size:.8rem;letter-spacing:-.01em;white-space:nowrap;}
+.lm-masheed{background:var(--masheed-black);color:white;}
+.lm-pc{background:var(--brand-pc);color:white;}
+.lm-sp{background:var(--brand-sp);color:white;}
+.lm-bsht{background:var(--brand-bsht);color:white;}
+.lm-sparx{background:var(--brand-sparx);color:white;}
+.lm-sm{font-size:.62rem!important;padding:.25rem .55rem!important;}
+.divider-v{width:1px;height:36px;background:rgba(0,0,0,.15);margin:0 .75rem;flex-shrink:0;}
+.divider-v-w{width:1px;height:36px;background:rgba(255,255,255,.2);margin:0 .75rem;flex-shrink:0;}
+.by-txt{font-size:.52rem;color:rgba(0,0,0,.35);letter-spacing:.1em;font-family:'Syne',sans-serif;text-align:center;display:block;margin-bottom:.25rem;}
+.by-txt-w{font-size:.52rem;color:rgba(255,255,255,.35);letter-spacing:.1em;font-family:'Syne',sans-serif;text-align:center;display:block;margin-bottom:.25rem;}
+.badge-ok{background:rgba(28,184,122,.12);color:var(--ok);padding:.18rem .5rem;border-radius:.25rem;font-size:.55rem;font-family:'Syne',sans-serif;font-weight:700;}
+.badge-no{background:rgba(232,65,39,.12);color:var(--no);padding:.18rem .5rem;border-radius:.25rem;font-size:.55rem;font-family:'Syne',sans-serif;font-weight:700;}
+
+/* Video frame */
+.vframe{width:100%;aspect-ratio:16/9;border-radius:.6rem;overflow:hidden;position:relative;background:#0d0d0d;}
+.timecode{font-size:.52rem;color:rgba(255,255,255,.4);font-family:'Syne',sans-serif;background:rgba(0,0,0,.5);padding:.18rem .4rem;border-radius:.2rem;}
+.lower-third-bar{background:linear-gradient(90deg,rgba(0,0,0,.85),transparent);padding:.4rem .7rem;display:inline-flex;align-items:center;gap:.5rem;border-radius:0 .3rem .3rem 0;}
+.lt-title{font-size:.58rem;font-weight:700;color:white;}
+.lt-sub{font-size:.48rem;color:rgba(255,255,255,.6);}
+
+/* Video rule cards */
+.video-rule-card{border:1px solid rgba(255,255,255,.1);border-radius:1rem;overflow:hidden;margin-bottom:1.5rem;}
+.vr-head{background:rgba(255,255,255,.05);padding:1rem 1.5rem;font-size:.88rem;font-weight:700;display:flex;gap:.75rem;align-items:center;}
+.vr-icon{width:26px;height:26px;border-radius:.35rem;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0;}
+.vr-body{padding:1.5rem;}
+.vr-eg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+@media(max-width:700px){.vr-eg-grid{grid-template-columns:1fr;}}
+.vr-eg{display:flex;flex-direction:column;gap:.5rem;}
+.vr-eg-lbl{font-size:.6rem;font-family:'Syne',sans-serif;color:rgba(255,255,255,.4);letter-spacing:.07em;}
+.vr-eg-note{font-size:.66rem;color:rgba(255,255,255,.45);line-height:1.5;}
+.wrong-strip{border-top:1px solid rgba(255,255,255,.08);padding-top:1.25rem;margin-top:1.25rem;}
+.wrong-strip-label{font-size:.65rem;color:var(--no);font-family:'Syne',sans-serif;margin-bottom:.65rem;letter-spacing:.06em;}
+
+/* Lockup patterns */
+.lockup-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.5rem;}
+@media(max-width:700px){.lockup-grid{grid-template-columns:1fr;}}
+.lockup-card{border-radius:1rem;overflow:hidden;}
+.lockup-vis{padding:2.5rem 2rem;display:flex;align-items:center;justify-content:center;min-height:150px;}
+.lockup-meta{padding:1.25rem 1.5rem 1.75rem;background:white;border:1px solid rgba(0,0,0,.06);border-top:none;}
+.lockup-pattern{font-size:.65rem;font-family:'Syne',sans-serif;color:var(--masheed-accent);letter-spacing:.12em;margin-bottom:.35rem;font-weight:700;}
+.lockup-title{font-size:.9rem;font-weight:700;margin-bottom:.35rem;}
+.lockup-desc{font-size:.78rem;color:var(--masheed-gray);line-height:1.6;}
+.lockup-when{font-size:.7rem;color:var(--masheed-black);font-weight:600;margin-top:.65rem;padding-top:.65rem;border-top:1px solid rgba(0,0,0,.06);}
+.lockup-when span{color:var(--masheed-gray);font-weight:400;}
+
+/* Context cards */
+.ctx-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.5rem;}
+@media(max-width:768px){.ctx-grid{grid-template-columns:1fr;}}
+.ctx-card{border-radius:1rem;overflow:hidden;border:1px solid rgba(0,0,0,.07);}
+.ctx-vis{padding:1.75rem 1.5rem;display:flex;flex-direction:column;gap:.6rem;min-height:140px;justify-content:flex-end;}
+.ctx-meta{padding:1.25rem 1.5rem;border-top:1px solid rgba(0,0,0,.06);background:white;}
+.ctx-title{font-size:.85rem;font-weight:700;margin-bottom:.25rem;}
+.ctx-desc{font-size:.75rem;color:var(--masheed-gray);line-height:1.6;}
+
+/* Spacing */
+.spacing-demo{background:var(--masheed-light);border-radius:1rem;padding:2.5rem;display:flex;flex-direction:column;gap:1.75rem;margin-top:2.5rem;}
+.sp-row{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;}
+.sp-lbl{font-size:.72rem;font-family:'Syne',sans-serif;color:var(--masheed-gray);min-width:80px;}
+.sp-val{background:white;border-radius:.5rem;padding:.8rem 1.4rem;border:1px solid rgba(0,0,0,.07);font-size:.78rem;font-weight:600;}
+.sp-warn{font-size:.67rem;color:var(--no);font-weight:500;font-family:'Syne',sans-serif;}
+
+/* Do/don't */
+.do-dont-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem;}
+@media(max-width:640px){.do-dont-grid{grid-template-columns:1fr;}}
+.do-card,.dont-card{border-radius:1rem;overflow:hidden;}
+.do-card{border:2px solid var(--ok);}
+.dont-card{border:2px solid var(--no);}
+.do-head,.dont-head{padding:1rem 1.5rem;font-size:.73rem;font-weight:700;letter-spacing:.1em;font-family:'Syne',sans-serif;display:flex;align-items:center;gap:.5rem;}
+.do-head{background:var(--ok);color:white;}
+.dont-head{background:var(--no);color:white;}
+.do-body,.dont-body{padding:1.25rem 1.5rem;background:white;}
+.do-body ul,.dont-body ul{list-style:none;display:flex;flex-direction:column;gap:.65rem;}
+.do-body li,.dont-body li{font-size:.82rem;color:var(--masheed-black);padding-right:1.5rem;position:relative;line-height:1.55;}
+.do-body li::before{content:'✓';position:absolute;right:0;color:var(--ok);font-weight:700;}
+.dont-body li::before{content:'✕';position:absolute;right:0;color:var(--no);font-weight:700;}
+
+/* Table */
+.guide-table{width:100%;border-collapse:collapse;margin-top:2rem;font-size:.82rem;}
+.guide-table th{text-align:right;padding:.8rem 1.2rem;background:var(--masheed-black);color:white;font-weight:600;font-size:.72rem;letter-spacing:.04em;}
+.guide-table td{padding:.8rem 1.2rem;border-bottom:1px solid rgba(0,0,0,.06);color:var(--masheed-gray);line-height:1.5;}
+.guide-table tr:hover td{background:var(--masheed-light);}
+.col-ctx{font-weight:600;color:var(--masheed-black)!important;}
+.bdot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-left:4px;vertical-align:middle;}
+
+/* Closing */
+.closing{background:var(--masheed-black);color:white;padding:5rem 5vw;display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;}
+.c-label{font-size:.72rem;color:var(--masheed-accent);letter-spacing:.2em;font-family:'Syne',sans-serif;margin-bottom:1rem;}
+.c-title{font-size:clamp(1.5rem,3vw,2.5rem);font-weight:800;letter-spacing:-.02em;line-height:1.2;}
+.c-sub{font-size:.85rem;color:rgba(255,255,255,.45);margin-top:.75rem;max-width:360px;}
+.closing-brands{display:flex;flex-direction:column;gap:.75rem;}
+.closing-brand-row{display:flex;align-items:center;gap:.75rem;font-size:.82rem;color:rgba(255,255,255,.6);}
+.cb-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+
+/* helpers */
+.flex{display:flex}.frow{display:flex;flex-direction:row}.fcol{display:flex;flex-direction:column}.ic{align-items:center}.jc{justify-content:center}
 </style>
 </head>
 <body>
 
+<!-- ═══ COVER ═══ -->
 <div class="cover">
-  <div class="cover-sub">MASHEED HOLDING · 2026</div>
-  <h1>دليل<br><span>الهوية</span><br>البصرية</h1>
+  <nav class="cover-nav">
+    <span class="doc-label">Brand Co-Existence Guidelines · دليل الهوية المشتركة</span>
+    <span style="font-size:.75rem;color:var(--masheed-accent);">v2.0 — 2025</span>
+  </nav>
+  <div class="cover-main">
+    <span class="cover-eyebrow">MASHEED HOLDING · مشيد القابضة</span>
+    <h1 class="cover-title">دليل<br><span>الهوية</span><br>المشتركة</h1>
+    <p class="cover-sub">إطار احترافي بأمثلة بصرية لكل قاعدة — لتسهيل التطبيق الفوري على أي مصمم أو منتج محتوى</p>
+    <div class="brand-pills">
+      <span class="pill pill-pc">مجتمع المشاريع</span>
+      <span class="pill pill-sp">مشاريع السعودية</span>
+      <span class="pill pill-bsht">بشت</span>
+      <span class="pill pill-sparx">سباركس</span>
+    </div>
+  </div>
+  <div class="cover-footer">
+    <span class="masheed-logo-text">مشيد</span>
+    <span>للاستخدام الداخلي فقط</span>
+  </div>
 </div>
 
+<!-- ═══ 01 BRAND ARCHITECTURE ═══ -->
 <div class="section">
-  <span class="section-label">01 / BRAND ARCHITECTURE</span>
-  <h2 class="section-title">هيكل العلامات التجارية</h2>
-  
-  <div class="brand-grid">
-    <div class="brand-card">
-      <div class="brand-visual"><img src="Projects comm.svg"></div>
-      <div class="brand-info"><h3>مجتمع المشاريع</h3></div>
+  <div class="page-marker">01 / 07</div>
+  <span class="section-label">BRAND ARCHITECTURE</span>
+  <h2 class="section-heading">هيكل العلامات التجارية</h2>
+  <p class="section-intro">مشيد القابضة مظلة مؤسسية تحتضن أربع علامات متخصصة، كل منها تخدم جمهورًا وقطاعًا مختلفًا.</p>
+  <div class="holding-card">
+    <div>
+      <div class="h-label">PARENT HOLDING · الشركة الأم</div>
+      <div class="h-name">مشيد</div>
+      <div class="h-desc">شركة سعودية رائدة في حلول التسويق الإبداعي وبناء العلامات التجارية</div>
     </div>
-    <div class="brand-card">
-      <div class="brand-visual"><img src="Ar logo white BG.svg"></div>
-      <div class="brand-info"><h3>مشاريع السعودية</h3></div>
+    <div class="h-badge"><strong>masheed.sa</strong>Riyadh, KSA</div>
+  </div>
+  <div class="connector-line">تمتلك وتشرف على</div>
+  <div class="sub-brands-grid">
+    <div class="brand-card brand-card-pc">
+      <div class="brand-card-header"><div class="brand-color-dot dot-pc"></div><div class="brand-card-title">مجتمع المشاريع</div><div class="brand-card-en">Projects Community</div></div>
+      <div class="brand-card-body"><span class="brand-type-tag tag-pc">COMMUNITY PLATFORM</span><p class="brand-card-desc">منصة رقمية تجمع رواد الأعمال والمستثمرين في مجتمع تفاعلي متكامل</p></div>
     </div>
-    <div class="brand-card">
-      <div class="brand-visual"><img src="Bisht.svg"></div>
-      <div class="brand-info"><h3>بشت</h3></div>
+    <div class="brand-card brand-card-sp">
+      <div class="brand-card-header"><div class="brand-color-dot dot-sp"></div><div class="brand-card-title">مشاريع السعودية</div><div class="brand-card-en">Saudi Projects</div></div>
+      <div class="brand-card-body"><span class="brand-type-tag tag-sp">MEDIA PLATFORM</span><p class="brand-card-desc">منصة إعلامية رقمية رائدة لمتابعة المشاريع التنموية والاقتصادية منذ 2011</p></div>
     </div>
-    <div class="brand-card">
-      <div class="brand-visual"><img src="Asset 13.svg"></div>
-      <div class="brand-info"><h3>سباركس</h3></div>
+    <div class="brand-card brand-card-bsht">
+      <div class="brand-card-header"><div class="brand-color-dot dot-bsht"></div><div class="brand-card-title">بشت</div><div class="brand-card-en">Bsht</div></div>
+      <div class="brand-card-body"><span class="brand-type-tag tag-bsht">BRAND / PRODUCT</span><p class="brand-card-desc">علامة تجارية متخصصة ضمن المحفظة الإعلامية والإبداعية لمشيد</p></div>
+    </div>
+    <div class="brand-card brand-card-sparx">
+      <div class="brand-card-header"><div class="brand-color-dot dot-sparx"></div><div class="brand-card-title">سباركس</div><div class="brand-card-en">SPARX</div></div>
+      <div class="brand-card-body"><span class="brand-type-tag tag-sparx">ANNUAL FORUM</span><p class="brand-card-desc">ملتقى مشاريع السعودية السنوي — منصة فعاليات لقطاع الأعمال في المملكة</p></div>
+    </div>
+  </div>
+  <div class="callout"><strong>قاعدة أساسية:</strong> لكل علامة شخصية مستقلة. الانتماء لمشيد يُظهر بطريقة محسوبة دون طغيان على الهوية الفرعية.</div>
+</div>
+
+<!-- ═══ 02 COLORS ═══ -->
+<div class="section section--light">
+  <div class="page-marker">02 / 07</div>
+  <span class="section-label">COLOR SYSTEM</span>
+  <h2 class="section-heading">منظومة الألوان</h2>
+  <p class="section-intro">كل علامة تمتلك لونها الحصري. لا يجوز استخدام لون علامة على مواد علامة أخرى.</p>
+
+  <div class="palette-grid">
+    <div class="color-swatch"><div class="swatch-color" style="background:#111111;"></div><div class="swatch-info"><div class="swatch-name">مشيد الأم</div><div class="swatch-hex">#111111</div><div class="swatch-brand">Masheed Holding</div></div></div>
+    <div class="color-swatch"><div class="swatch-color" style="background:#C8A96E;"></div><div class="swatch-info"><div class="swatch-name">ذهبي مشيد</div><div class="swatch-hex">#C8A96E</div><div class="swatch-brand">Accent Color</div></div></div>
+    <div class="color-swatch"><div class="swatch-color" style="background:#1A5BBE;"></div><div class="swatch-info"><div class="swatch-name">أزرق مجتمع المشاريع</div><div class="swatch-hex">#1A5BBE</div><div class="swatch-brand">Projects Community</div></div></div>
+    <div class="color-swatch"><div class="swatch-color" style="background:#1B6B6A;"></div><div class="swatch-info"><div class="swatch-name">أخضر مشاريع السعودية</div><div class="swatch-hex">#1B6B6A</div><div class="swatch-brand">Saudi Projects</div></div></div>
+    <div class="color-swatch"><div class="swatch-color" style="background:#2C2C2C;"></div><div class="swatch-info"><div class="swatch-name">لون بشت</div><div class="swatch-hex">#2C2C2C</div><div class="swatch-brand">Bsht</div></div></div>
+    <div class="color-swatch"><div class="swatch-color" style="background:#E84127;"></div><div class="swatch-info"><div class="swatch-name">برتقالي سباركس</div><div class="swatch-hex">#E84127</div><div class="swatch-brand">SPARX Forum</div></div></div>
+  </div>
+
+  <div class="example-block">
+    <div class="example-block-title">مثال — الاستخدام الصحيح والخاطئ للألوان</div>
+    <div class="example-pair">
+      <div class="ex-card">
+        <div class="ex-label ex-label--ok">✓ صحيح — كل علامة بلونها الأصيل</div>
+        <div class="ex-vis ex-vis--white">
+          <div class="ok-overlay"></div>
+          <div class="flex fcol ic" style="gap:.7rem;">
+            <div class="flex ic" style="gap:.5rem;"><div style="width:8px;height:8px;border-radius:50%;background:var(--brand-pc);"></div><div class="lm lm-pc lm-sm">مجتمع المشاريع</div></div>
+            <div class="flex ic" style="gap:.5rem;"><div style="width:8px;height:8px;border-radius:50%;background:var(--brand-sp);"></div><div class="lm lm-sp lm-sm">مشاريع السعودية</div></div>
+            <div class="flex ic" style="gap:.5rem;"><div style="width:8px;height:8px;border-radius:50%;background:var(--brand-sparx);"></div><div class="lm lm-sparx lm-sm">سباركس</div></div>
+          </div>
+        </div>
+        <div class="ex-note">كل علامة بلونها المعتمد فقط — لا تبادل بين الألوان</div>
+      </div>
+      <div class="ex-card">
+        <div class="ex-label ex-label--no">✕ خطأ — استخدام لون علامة على أخرى</div>
+        <div class="ex-vis ex-vis--white">
+          <div class="no-overlay"></div>
+          <div class="flex fcol ic" style="gap:.7rem;">
+            <div class="flex ic" style="gap:.5rem;"><div class="lm lm-sm" style="background:var(--brand-sparx);color:white;">مجتمع المشاريع</div><span class="badge-no">خطأ</span></div>
+            <div class="flex ic" style="gap:.5rem;"><div class="lm lm-sm" style="background:var(--brand-pc);color:white;">مشاريع السعودية</div><span class="badge-no">خطأ</span></div>
+            <div class="flex ic" style="gap:.5rem;"><div class="lm lm-sm" style="background:var(--brand-sp);color:white;">سباركس</div><span class="badge-no">خطأ</span></div>
+          </div>
+        </div>
+        <div class="ex-note">برتقالي سباركس على مجتمع المشاريع — هذا خلط هويات غير مقبول إطلاقًا</div>
+      </div>
+    </div>
+
+    <div class="example-pair" style="margin-bottom:0;">
+      <div class="ex-card">
+        <div class="ex-label ex-label--ok">✓ شعار أبيض على خلفية ملونة</div>
+        <div class="ex-vis" style="background:var(--brand-sp);">
+          <div class="ok-overlay"></div>
+          <div class="lm" style="background:white;color:var(--brand-sp);">مشاريع السعودية</div>
+        </div>
+        <div class="ex-note">على الخلفية الخضراء: النسخة البيضاء من الشعار — تباين واضح ومقروء</div>
+      </div>
+      <div class="ex-card">
+        <div class="ex-label ex-label--no">✕ شعار بنفس لون الخلفية</div>
+        <div class="ex-vis" style="background:var(--brand-sp);">
+          <div class="no-overlay"></div>
+          <div class="lm lm-sp" style="opacity:.45;">مشاريع السعودية</div>
+        </div>
+        <div class="ex-note">الشعار الأخضر على خلفية خضراء — يختفي الشعار ويفقد وضوحه تمامًا</div>
+      </div>
     </div>
   </div>
 </div>
 
+<!-- ═══ 03 LOCKUP PATTERNS ═══ -->
 <div class="section">
-  <span class="section-label">02 / USAGE CONTEXTS</span>
-  <h2 class="section-title">قواعد التنسيق (Patterns)</h2>
+  <div class="page-marker">03 / 07</div>
+  <span class="section-label">LOGO LOCKUP PATTERNS</span>
+  <h2 class="section-heading">أنماط تنسيق الشعارات</h2>
+  <p class="section-intro">4 أنماط معتمدة — مع مثال بصري مباشر لكل نمط وتوضيح متى تستخدمه.</p>
 
-  <div class="pattern-box">
-    <img src="Logo with slogan.svg" style="height: 45px;">
-    <div class="divider-v"></div>
-    <img src="Ar logo white BG.svg" style="height: 45px;">
+  <div class="lockup-grid">
+    <div class="lockup-card">
+      <div class="lockup-vis" style="background:var(--masheed-light);">
+        <div class="flex fcol ic" style="gap:.3rem;">
+          <span class="by-txt">BY MASHEED</span>
+          <div class="lm lm-pc">مجتمع المشاريع</div>
+        </div>
+      </div>
+      <div class="lockup-meta">
+        <div class="lockup-pattern">PATTERN A</div>
+        <div class="lockup-title">النسب الخفيف "By Masheed"</div>
+        <div class="lockup-desc">العلامة الفرعية تهيمن — مشيد كنص رمادي صغير شفاف فوق أو تحت الشعار.</div>
+        <div class="lockup-when">متى: <span>سوشيال ميديا، محتوى يومي، أغلفة منصات</span></div>
+      </div>
+    </div>
+
+    <div class="lockup-card">
+      <div class="lockup-vis" style="background:var(--masheed-light);">
+        <div class="flex ic">
+          <div class="lm lm-masheed">مشيد</div>
+          <div class="divider-v"></div>
+          <div class="lm lm-sp">مشاريع السعودية</div>
+        </div>
+      </div>
+      <div class="lockup-meta">
+        <div class="lockup-pattern">PATTERN B</div>
+        <div class="lockup-title">الظهور المتوازي بفاصل</div>
+        <div class="lockup-desc">الشعاران جنبًا إلى جنب مع فاصل رأسي — حضور متوازن ومتساوٍ لكلتيهما.</div>
+        <div class="lockup-when">متى: <span>وثائق رسمية، عقود، Press Release</span></div>
+      </div>
+    </div>
+
+    <div class="lockup-card">
+      <div class="lockup-vis" style="background:var(--masheed-black);">
+        <div class="flex fcol ic" style="gap:.55rem;">
+          <div class="lm" style="background:white;color:var(--masheed-black);font-size:.78rem;">مشيد القابضة</div>
+          <div style="font-size:.5rem;color:rgba(255,255,255,.35);letter-spacing:.1em;font-family:'Syne',sans-serif;">PORTFOLIO BRANDS</div>
+          <div class="flex" style="gap:.4rem;">
+            <div class="lm lm-pc lm-sm">مجتمع المشاريع</div>
+            <div class="lm lm-sp lm-sm">مشاريع السعودية</div>
+            <div class="lm lm-sparx lm-sm">سباركس</div>
+          </div>
+        </div>
+      </div>
+      <div class="lockup-meta">
+        <div class="lockup-pattern">PATTERN C</div>
+        <div class="lockup-title">المظلة الأم المهيمنة</div>
+        <div class="lockup-desc">مشيد في الأعلى كمظلة، العلامات الفرعية تصطف أسفلها بحجم أصغر موحد.</div>
+        <div class="lockup-when">متى: <span>Pitch Deck، تقارير سنوية، Capability Deck</span></div>
+      </div>
+    </div>
+
+    <div class="lockup-card">
+      <div class="lockup-vis" style="background:#1a1a1a;">
+        <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:.5rem;padding:.7rem 1.2rem;display:flex;align-items:center;gap:.9rem;">
+          <div class="flex fcol" style="gap:.15rem;">
+            <span class="by-txt-w">POWERED BY</span>
+            <div class="lm" style="background:transparent;color:white;padding:0;font-size:.85rem;">مشيد</div>
+          </div>
+          <div class="divider-v-w"></div>
+          <div class="lm lm-sparx" style="font-size:.72rem;">SPARX 2025</div>
+        </div>
+      </div>
+      <div class="lockup-meta">
+        <div class="lockup-pattern">PATTERN D</div>
+        <div class="lockup-title">التظهير الراعي "Powered by"</div>
+        <div class="lockup-desc">خاص بسباركس — تحافظ على قيمتها كحدث مستقل مع نسبها لمشيد.</div>
+        <div class="lockup-when">متى: <span>فعاليات سباركس فقط — Footer بانرات، شاشات افتتاح</span></div>
+      </div>
+    </div>
   </div>
-  <p style="text-align:center; color: #666;">النمط B: الظهور المتوازي بين القابضة والعلامة التابعة.</p>
+
+  <!-- SPACING EXAMPLES -->
+  <div class="spacing-demo">
+    <div style="font-size:.85rem;font-weight:700;">مساحة الحماية الإلزامية — Clear Space</div>
+    <div class="example-pair" style="margin-bottom:0;">
+      <div class="ex-card">
+        <div class="ex-label ex-label--ok">✓ مسافة كافية بين الشعارين</div>
+        <div class="ex-vis ex-vis--white">
+          <div class="ok-overlay"></div>
+          <div class="flex ic" style="gap:2.5rem;">
+            <div class="lm lm-masheed" style="font-size:.75rem;">مشيد</div>
+            <div class="lm lm-sp lm-sm">مشاريع السعودية</div>
+          </div>
+        </div>
+        <div class="ex-note">مسافة واضحة تمنح كل شعار فضاءه ووضوحه البصري</div>
+      </div>
+      <div class="ex-card">
+        <div class="ex-label ex-label--no">✕ شعاران متلاصقان بدون مسافة</div>
+        <div class="ex-vis ex-vis--white">
+          <div class="no-overlay"></div>
+          <div class="flex ic" style="gap:0;">
+            <div class="lm lm-masheed" style="font-size:.75rem;border-radius:.35rem 0 0 .35rem;">مشيد</div>
+            <div class="lm lm-sp lm-sm" style="border-radius:0 .35rem .35rem 0;">مشاريع السعودية</div>
+          </div>
+        </div>
+        <div class="ex-note">التلاصق يجعلهما يبدوان كشعار واحد — مربك للجمهور ومُضعف للهويتين</div>
+      </div>
+    </div>
+    <div class="sp-row">
+      <span class="sp-lbl">الحماية</span>
+      <div class="sp-val">× 1.5 من ارتفاع الحرف من كل الاتجاهات</div>
+    </div>
+    <div class="sp-row">
+      <span class="sp-lbl">الحد الأدنى</span>
+      <div class="sp-val">24px / 8mm</div>
+      <span class="sp-warn">⚠ أقل من ذلك لا يُجاز — يفقد الشعار قراءته</span>
+    </div>
+  </div>
 </div>
 
+<!-- ═══ 04 CONTEXTS ═══ -->
+<div class="section section--light">
+  <div class="page-marker">04 / 07</div>
+  <span class="section-label">USAGE CONTEXTS</span>
+  <h2 class="section-heading">سياقات الاستخدام</h2>
+  <p class="section-intro">كيف تطبق القواعد عبر كل منصة — مع موكاب لكل سياق.</p>
+
+  <div class="ctx-grid">
+    <div class="ctx-card">
+      <div class="ctx-vis" style="background:linear-gradient(145deg,#0d1b3e,#1a3a6e);">
+        <div style="display:flex;justify-content:space-between;align-items:center;width:100%;padding:.5rem 0;">
+          <div class="lm lm-pc lm-sm">مجتمع المشاريع</div>
+          <div style="font-size:.5rem;color:rgba(255,255,255,.35);font-family:'Syne',sans-serif;letter-spacing:.08em;">by masheed</div>
+        </div>
+        <div style="flex:1;display:flex;align-items:center;justify-content:center;font-size:.72rem;color:rgba(255,255,255,.4);">محتوى المنشور</div>
+      </div>
+      <div class="ctx-meta">
+        <div class="ctx-title">محتوى سوشيال ميديا اليومي</div>
+        <div class="ctx-desc">الفرعية تهيمن. مشيد كنص "by masheed" صغير فقط — لا شعار مشيد كامل.</div>
+      </div>
+    </div>
+
+    <div class="ctx-card">
+      <div class="ctx-vis" style="background:#f0f0f0;">
+        <div style="width:72px;height:72px;border-radius:50%;background:var(--brand-sp);display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;color:white;margin:0 auto;text-align:center;">مشاريع<br>السعودية</div>
+        <div style="text-align:center;margin-top:.6rem;">
+          <div style="font-size:.72rem;font-weight:700;">مشاريع السعودية</div>
+          <div style="font-size:.6rem;color:var(--masheed-gray);">@SaudiProjects · by Masheed</div>
+        </div>
+      </div>
+      <div class="ctx-meta">
+        <div class="ctx-title">بروفايل المنصة</div>
+        <div class="ctx-desc">صورة البروفايل: شعار الفرعية فقط. الـ Bio يذكر "by Masheed" — لا شعار مشيد في الغلاف.</div>
+      </div>
+    </div>
+
+    <div class="ctx-card">
+      <div class="ctx-vis" style="background:white;border:1px solid rgba(0,0,0,.06);">
+        <div style="background:var(--masheed-light);border-radius:.4rem;padding:1rem;width:100%;display:flex;flex-direction:column;gap:.55rem;">
+          <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(0,0,0,.07);padding-bottom:.5rem;">
+            <div class="lm lm-masheed lm-sm">مشيد</div>
+            <div class="divider-v" style="height:18px;margin:0 .45rem;"></div>
+            <div class="lm lm-sp lm-sm">مشاريع السعودية</div>
+          </div>
+          <div style="font-size:.55rem;color:var(--masheed-gray);">اتفاقية شراكة — Pattern B</div>
+          <div style="height:25px;background:rgba(0,0,0,.04);border-radius:.25rem;"></div>
+          <div style="height:18px;background:rgba(0,0,0,.04);border-radius:.25rem;width:65%;"></div>
+        </div>
+      </div>
+      <div class="ctx-meta">
+        <div class="ctx-title">وثائق رسمية وعقود</div>
+        <div class="ctx-desc">النمط B — كلا الشعارين بشكل كامل ومتوازن مع فاصل في ترويسة الوثيقة.</div>
+      </div>
+    </div>
+
+    <div class="ctx-card">
+      <div class="ctx-vis" style="background:var(--masheed-black);">
+        <div class="flex fcol ic" style="gap:.5rem;">
+          <div class="lm" style="background:white;color:var(--masheed-black);font-size:.75rem;">مشيد القابضة</div>
+          <div style="font-size:.48rem;color:rgba(255,255,255,.3);letter-spacing:.1em;font-family:'Syne',sans-serif;">OUR BRANDS</div>
+          <div class="flex" style="gap:.35rem;flex-wrap:wrap;justify-content:center;">
+            <div class="lm lm-pc" style="font-size:.5rem;padding:.2rem .4rem;">مجتمع المشاريع</div>
+            <div class="lm lm-sp" style="font-size:.5rem;padding:.2rem .4rem;">مشاريع السعودية</div>
+            <div class="lm lm-sparx" style="font-size:.5rem;padding:.2rem .4rem;">سباركس</div>
+          </div>
+        </div>
+      </div>
+      <div class="ctx-meta">
+        <div class="ctx-title">Pitch Deck والتقارير المؤسسية</div>
+        <div class="ctx-desc">النمط C — مشيد تهيمن كمظلة. الفرعيات تصطف أسفلها كمحفظة أعمال.</div>
+      </div>
+    </div>
+  </div>
+
+  <table class="guide-table">
+    <thead><tr><th>السياق</th><th>ما يظهر</th><th>مشيد</th><th>النمط</th></tr></thead>
+    <tbody>
+      <tr><td class="col-ctx">بروفايل انستقرام / تويتر</td><td><span class="bdot" style="background:var(--brand-pc);"></span>الفرعية فقط</td><td>في Bio</td><td>A</td></tr>
+      <tr><td class="col-ctx">Thumbnail يوتيوب</td><td><span class="bdot" style="background:var(--brand-sp);"></span>الفرعية فقط</td><td>غائبة</td><td>A</td></tr>
+      <tr><td class="col-ctx">Intro الفيديو</td><td><span class="bdot" style="background:var(--brand-pc);"></span>الفرعية فقط</td><td>غائبة</td><td>A</td></tr>
+      <tr><td class="col-ctx">Outro / End Card</td><td><span class="bdot" style="background:#C8A96E;"></span>مشيد وحدها</td><td>حضور كامل</td><td>مشيد فقط</td></tr>
+      <tr><td class="col-ctx">وثائق رسمية / عقود</td><td><span class="bdot" style="background:#111;"></span>مشيد + الفرعية</td><td>حضور كامل</td><td>B</td></tr>
+      <tr><td class="col-ctx">بانر فعالية سباركس</td><td><span class="bdot" style="background:var(--brand-sparx);"></span>سباركس</td><td>Footer فقط</td><td>D</td></tr>
+      <tr><td class="col-ctx">Pitch Deck مستثمرين</td><td><span class="bdot" style="background:#111;"></span>مشيد كمظلة</td><td>مهيمنة</td><td>C</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══ 05 VIDEO ═══ -->
+<div class="section section--dark">
+  <div class="page-marker">05 / 07</div>
+  <span class="section-label">VIDEO & MOTION GUIDELINES</span>
+  <h2 class="section-heading">قواعد الفيديو والحركة</h2>
+  <p class="section-intro">الفيديو أكثر وسيلة تأثيرًا — موكاب لكل لحظة من الفيديو لكل علامة.</p>
+
+  <!-- Brand 01 -->
+  <div class="video-rule-card" style="margin-top:2.5rem;">
+    <div class="vr-head">
+      <div class="vr-icon" style="background:rgba(26,91,190,.3);color:var(--brand-pc);">01</div>
+      مجتمع المشاريع ومشاريع السعودية — المحتوى اليومي
+    </div>
+    <div class="vr-body">
+      <div class="vr-eg-grid">
+        <div class="vr-eg">
+          <div class="vr-eg-lbl">⬤ INTRO — 0:00 إلى 0:03</div>
+          <div class="vframe">
+            <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0d1b3e,#1a3a6e);display:flex;align-items:center;justify-content:center;">
+              <div class="lm lm-pc" style="font-size:.82rem;">مجتمع المشاريع</div>
+            </div>
+            <div style="position:absolute;bottom:.5rem;left:.5rem;" class="timecode">00:00–00:03</div>
+            <div style="position:absolute;top:.4rem;right:.4rem;"><span class="badge-ok" style="font-size:.5rem;">الفرعية فقط</span></div>
+          </div>
+          <div class="vr-eg-note">الشعار الفرعي يظهر وحده — بدون مشيد إطلاقًا</div>
+        </div>
+
+        <div class="vr-eg">
+          <div class="vr-eg-lbl">⬤ أثناء الفيديو</div>
+          <div class="vframe">
+            <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0d1b3e,#162a5e);display:flex;align-items:center;justify-content:center;font-size:.68rem;color:rgba(255,255,255,.4);">محتوى الفيديو</div>
+            <div style="position:absolute;top:.4rem;right:.4rem;opacity:.3;">
+              <div class="lm lm-pc" style="font-size:.45rem;padding:.15rem .35rem;">مجتمع المشاريع</div>
+            </div>
+            <div style="position:absolute;bottom:.4rem;left:.4rem;font-size:.48rem;color:rgba(255,255,255,.3);font-family:'Syne',sans-serif;">Watermark 30% opacity</div>
+          </div>
+          <div class="vr-eg-note">Watermark الفرعية بشفافية 30% فقط — مشيد غائبة تمامًا</div>
+        </div>
+
+        <div class="vr-eg">
+          <div class="vr-eg-lbl">⬤ END CARD — آخر 3 ثوانٍ</div>
+          <div class="vframe">
+            <div style="position:absolute;inset:0;background:var(--masheed-black);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35rem;">
+              <div class="lm lm-masheed" style="font-size:.8rem;">مشيد</div>
+              <div style="font-size:.48rem;color:rgba(255,255,255,.35);font-family:'Syne',sans-serif;letter-spacing:.1em;">masheed.sa</div>
+            </div>
+            <div style="position:absolute;bottom:.4rem;left:.4rem;" class="timecode">آخر 2–3 ثوانٍ</div>
+            <div style="position:absolute;top:.4rem;right:.4rem;"><span class="badge-ok" style="font-size:.5rem;">مشيد فقط</span></div>
+          </div>
+          <div class="vr-eg-note">End Card نظيف لمشيد وحدها — لا تجمع مشيد والفرعية في نفس الشاشة</div>
+        </div>
+      </div>
+
+      <div class="wrong-strip">
+        <div class="wrong-strip-label">✕ خطأ شائع — مشيد والفرعية في نفس الشاشة:</div>
+        <div style="max-width:240px;">
+          <div class="vframe" style="border:1.5px solid rgba(232,65,39,.4);">
+            <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0d1b3e,#1a3a6e);display:flex;align-items:center;justify-content:center;gap:.4rem;">
+              <div class="lm lm-masheed" style="font-size:.65rem;">مشيد</div>
+              <div class="divider-v-w" style="height:22px;"></div>
+              <div class="lm lm-pc" style="font-size:.65rem;">مجتمع المشاريع</div>
+            </div>
+            <div style="position:absolute;inset:0;border:2px solid rgba(232,65,39,.4);border-radius:.6rem;pointer-events:none;"></div>
+            <div style="position:absolute;top:.4rem;right:.4rem;"><span class="badge-no" style="font-size:.48rem;">خطأ</span></div>
+          </div>
+          <div style="font-size:.62rem;color:rgba(255,255,255,.3);margin-top:.4rem;line-height:1.5;">لا تضع مشيد والفرعية معًا في نفس الشاشة خلال الفيديو</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Brand 02: SPARX -->
+  <div class="video-rule-card">
+    <div class="vr-head">
+      <div class="vr-icon" style="background:rgba(232,65,39,.3);color:var(--brand-sparx);">02</div>
+      فعاليات سباركس — تغطية مباشرة ومسجلة
+    </div>
+    <div class="vr-body">
+      <div class="vr-eg-grid">
+        <div class="vr-eg">
+          <div class="vr-eg-lbl">⬤ شاشة الافتتاح — 3 ثوانٍ</div>
+          <div class="vframe">
+            <div style="position:absolute;inset:0;background:#111;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;">
+              <div style="font-size:.5rem;color:rgba(255,255,255,.35);font-family:'Syne',sans-serif;letter-spacing:.12em;">تقدم لكم</div>
+              <div class="lm lm-masheed" style="font-size:.78rem;">مشيد</div>
+            </div>
+          </div>
+          <div class="vr-eg-note">مشيد تظهر لوحدها في شاشة الافتتاح كجهة منظِمة — 3 ثوانٍ فقط</div>
+        </div>
+
+        <div class="vr-eg">
+          <div class="vr-eg-lbl">⬤ التغطية المباشرة</div>
+          <div class="vframe">
+            <div style="position:absolute;inset:0;background:linear-gradient(160deg,#1a0a06,#2d0e07);display:flex;align-items:center;justify-content:center;font-size:.62rem;color:rgba(255,255,255,.35);">المتحدث على المنصة</div>
+            <div style="position:absolute;bottom:.55rem;right:0;">
+              <div class="lower-third-bar" style="background:linear-gradient(90deg,rgba(232,65,39,.95),transparent);">
+                <div><div class="lt-title">SPARX 2025</div><div class="lt-sub">ملتقى مشاريع السعودية</div></div>
+              </div>
+            </div>
+            <div style="position:absolute;top:.4rem;left:.4rem;background:var(--brand-sparx);color:white;font-size:.5rem;padding:.12rem .38rem;border-radius:.2rem;font-family:'Syne',sans-serif;font-weight:700;">● LIVE</div>
+          </div>
+          <div class="vr-eg-note">Lower Third بلون سباركس — مشيد غائبة تمامًا خلال التغطية</div>
+        </div>
+
+        <div class="vr-eg">
+          <div class="vr-eg-lbl">⬤ شاشة الختام — 5 ثوانٍ</div>
+          <div class="vframe">
+            <div style="position:absolute;inset:0;background:#0d0d0d;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;">
+              <div style="font-size:.5rem;color:rgba(255,255,255,.3);font-family:'Syne',sans-serif;letter-spacing:.1em;">ORGANIZED BY</div>
+              <div class="lm lm-masheed" style="font-size:.75rem;">مشيد</div>
+            </div>
+          </div>
+          <div class="vr-eg-note">ختام بمشيد وحدها — لا إعادة ذكر سباركس في الشاشة الأخيرة</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Brand 03: Masheed -->
+  <div class="video-rule-card">
+    <div class="vr-head">
+      <div class="vr-icon" style="background:rgba(200,169,110,.2);color:var(--masheed-accent);">03</div>
+      محتوى مشيد الأم
+    </div>
+    <div class="vr-body">
+      <div class="vr-eg-grid">
+        <div class="vr-eg">
+          <div class="vr-eg-lbl">⬤ Intro مشيد الأم</div>
+          <div class="vframe">
+            <div style="position:absolute;inset:0;background:radial-gradient(circle at 30% 50%,#1a1800,#111);display:flex;align-items:center;justify-content:center;gap:.45rem;">
+              <div class="lm lm-masheed" style="font-size:.95rem;">مشيد</div>
+              <div style="width:3px;height:3px;border-radius:50%;background:var(--masheed-accent);"></div>
+              <div style="font-size:.48rem;color:var(--masheed-accent);font-family:'Syne',sans-serif;letter-spacing:.1em;">masheed.sa</div>
+            </div>
+          </div>
+          <div class="vr-eg-note">هوية مشيد مستقلة — أسود وذهبي فقط. لا ألوان الفرعيات.</div>
+        </div>
+        <div class="vr-eg">
+          <div class="vr-eg-lbl">⬤ محفظة الأعمال Reel</div>
+          <div class="vframe">
+            <div style="position:absolute;inset:0;background:#111;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;padding:.75rem;">
+              <div style="font-size:.5rem;color:rgba(255,255,255,.35);font-family:'Syne',sans-serif;letter-spacing:.1em;">PORTFOLIO</div>
+              <div class="flex" style="gap:.35rem;flex-wrap:wrap;justify-content:center;">
+                <div class="lm lm-pc" style="font-size:.5rem;padding:.18rem .38rem;">مجتمع المشاريع</div>
+                <div class="lm lm-sp" style="font-size:.5rem;padding:.18rem .38rem;">مشاريع السعودية</div>
+                <div class="lm lm-bsht" style="font-size:.5rem;padding:.18rem .38rem;">بشت</div>
+                <div class="lm lm-sparx" style="font-size:.5rem;padding:.18rem .38rem;">سباركس</div>
+              </div>
+            </div>
+          </div>
+          <div class="vr-eg-note">يجوز عرض الفرعيات كـ"محفظة أعمالنا" في Reel واحد لمشيد</div>
+        </div>
+        <div class="vr-eg">
+          <div class="vr-eg-lbl">✕ ممنوع في محتوى مشيد</div>
+          <div class="vframe" style="border:1.5px solid rgba(232,65,39,.4);">
+            <div style="position:absolute;inset:0;background:#111;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35rem;">
+              <div class="lm" style="background:var(--brand-pc);color:white;font-size:.75rem;">مشيد</div>
+              <div style="font-size:.52rem;color:rgba(255,255,255,.3);">لون مجتمع المشاريع على مشيد</div>
+            </div>
+            <div style="position:absolute;inset:0;border:2px solid rgba(232,65,39,.35);border-radius:.6rem;pointer-events:none;"></div>
+            <div style="position:absolute;top:.4rem;right:.4rem;"><span class="badge-no" style="font-size:.48rem;">خطأ</span></div>
+          </div>
+          <div class="vr-eg-note">لا تستخدم ألوان الفرعيات على محتوى مشيد الأم</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Brand 04: Bsht -->
+  <div class="video-rule-card">
+    <div class="vr-head">
+      <div class="vr-icon" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);">04</div>
+      بشت — الاستقلالية الكاملة
+    </div>
+    <div class="vr-body">
+      <div class="vr-eg-grid">
+        <div class="vr-eg">
+          <div class="vr-eg-lbl">⬤ محتوى بشت اليومي</div>
+          <div class="vframe">
+            <div style="position:absolute;inset:0;background:#1c1c1c;display:flex;align-items:center;justify-content:center;">
+              <div class="lm" style="background:white;color:var(--masheed-black);font-size:.85rem;">بشت</div>
+            </div>
+          </div>
+          <div class="vr-eg-note">بشت مستقلة تمامًا — لا ذكر لمشيد في المحتوى اليومي</div>
+        </div>
+        <div class="vr-eg">
+          <div class="vr-eg-lbl">⬤ مواد مؤسسية بشت</div>
+          <div class="vframe">
+            <div style="position:absolute;inset:0;background:#f5f4f1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.45rem;">
+              <div class="lm lm-bsht" style="font-size:.8rem;">بشت</div>
+              <div style="font-size:.5rem;color:rgba(0,0,0,.35);font-family:'Syne',sans-serif;">بشت by مشيد</div>
+            </div>
+          </div>
+          <div class="vr-eg-note">في ذيل الوثائق المؤسسية فقط: "بشت by مشيد" مقبول</div>
+        </div>
+        <div class="vr-eg">
+          <div class="vr-eg-lbl">✕ ممنوع — مشيد في End Card بشت</div>
+          <div class="vframe" style="border:1.5px solid rgba(232,65,39,.4);">
+            <div style="position:absolute;inset:0;background:var(--masheed-black);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35rem;">
+              <div class="lm lm-masheed" style="font-size:.75rem;">مشيد</div>
+              <div style="font-size:.5rem;color:rgba(255,255,255,.3);">End Card خاطئ لمحتوى بشت</div>
+            </div>
+            <div style="position:absolute;inset:0;border:2px solid rgba(232,65,39,.35);border-radius:.6rem;pointer-events:none;"></div>
+            <div style="position:absolute;top:.4rem;right:.4rem;"><span class="badge-no" style="font-size:.48rem;">خطأ</span></div>
+          </div>
+          <div class="vr-eg-note">لا تضع End Card مشيد على فيديوهات بشت — بشت تنتهي بشعارها فقط</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 06 DO/DON'T ═══ -->
+<div class="section">
+  <div class="page-marker">06 / 07</div>
+  <span class="section-label">DO'S & DON'TS</span>
+  <h2 class="section-heading">يجوز ولا يجوز — بالأمثلة</h2>
+  <p class="section-intro">القواعد الأكثر شيوعًا — كل منها مع تمثيل بصري مباشر للصح والغلط.</p>
+
+  <!-- Example 1 -->
+  <div class="example-block">
+    <div class="example-block-title">مثال ١ — تشويه نسبة الشعار</div>
+    <div class="example-pair">
+      <div class="ex-card">
+        <div class="ex-label ex-label--ok">✓ الشعار بنسبته الأصلية</div>
+        <div class="ex-vis ex-vis--white"><div class="ok-overlay"></div><div class="lm lm-pc">مجتمع المشاريع</div></div>
+        <div class="ex-note">الشعار بنسبة أبعاده الصحيحة — لا تغيير في العرض أو الارتفاع</div>
+      </div>
+      <div class="ex-card">
+        <div class="ex-label ex-label--no">✕ شعار ممطوط أفقيًا</div>
+        <div class="ex-vis ex-vis--white">
+          <div class="no-overlay"></div>
+          <div class="lm lm-pc" style="transform:scaleX(1.7);letter-spacing:.15em;">مجتمع المشاريع</div>
+          <div style="position:absolute;top:.4rem;right:.4rem;"><span class="badge-no">stretched</span></div>
+        </div>
+        <div class="ex-note">مطّ الشعار أفقيًا مخالفة صريحة — يُفسد الهوية ويبدو غير احترافي</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Example 2 -->
+  <div class="example-block">
+    <div class="example-block-title">مثال ٢ — تأثيرات Glow وDrop Shadow على الشعار</div>
+    <div class="example-pair">
+      <div class="ex-card">
+        <div class="ex-label ex-label--ok">✓ شعار نظيف بدون تأثيرات</div>
+        <div class="ex-vis" style="background:#1a3a6e;"><div class="ok-overlay"></div><div class="lm" style="background:white;color:var(--brand-pc);">مجتمع المشاريع</div></div>
+        <div class="ex-note">النسخة البيضاء على خلفية ملونة — نظيف ومقروء وباحترافية</div>
+      </div>
+      <div class="ex-card">
+        <div class="ex-label ex-label--no">✕ Glow أو Drop Shadow</div>
+        <div class="ex-vis" style="background:#1a3a6e;">
+          <div class="no-overlay"></div>
+          <div class="lm" style="background:white;color:var(--brand-pc);box-shadow:0 0 18px 7px rgba(100,160,255,.75),0 4px 12px rgba(0,0,0,.4);">مجتمع المشاريع</div>
+        </div>
+        <div class="ex-note">Glow أو ظل على الشعار ممنوع تمامًا — يضعف الهوية ويبدو غير احترافي</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Example 3 -->
+  <div class="example-block">
+    <div class="example-block-title">مثال ٣ — وضع علامتين فرعيتين جنبًا إلى جنب بدون مشيد</div>
+    <div class="example-pair">
+      <div class="ex-card">
+        <div class="ex-label ex-label--ok">✓ مشيد وسيط بين الفرعيتين</div>
+        <div class="ex-vis ex-vis--white">
+          <div class="ok-overlay"></div>
+          <div class="flex ic" style="gap:.5rem;">
+            <div class="lm lm-pc lm-sm">مجتمع المشاريع</div>
+            <div class="divider-v"></div>
+            <div class="lm lm-masheed lm-sm">مشيد</div>
+            <div class="divider-v"></div>
+            <div class="lm lm-sp lm-sm">مشاريع السعودية</div>
+          </div>
+        </div>
+        <div class="ex-note">عند الحاجة لجمع فرعيتين، تتوسطهما مشيد كحلقة وصل مؤسسية</div>
+      </div>
+      <div class="ex-card">
+        <div class="ex-label ex-label--no">✕ فرعيتان مباشرتان بلا مشيد</div>
+        <div class="ex-vis ex-vis--white">
+          <div class="no-overlay"></div>
+          <div class="flex ic" style="gap:.5rem;">
+            <div class="lm lm-pc lm-sm">مجتمع المشاريع</div>
+            <div class="divider-v"></div>
+            <div class="lm lm-sp lm-sm">مشاريع السعودية</div>
+          </div>
+        </div>
+        <div class="ex-note">جمع فرعيتين بدون مشيد يُعطي انطباعًا خاطئًا بأنهما شراكة أو كيان واحد</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Example 4 -->
+  <div class="example-block">
+    <div class="example-block-title">مثال ٤ — استخدام شعار مشيد بنفس حجم الفرعية</div>
+    <div class="example-pair">
+      <div class="ex-card">
+        <div class="ex-label ex-label--ok">✓ تفاوت واضح في الحجم والتسلسل</div>
+        <div class="ex-vis ex-vis--light">
+          <div class="ok-overlay"></div>
+          <div class="flex fcol ic" style="gap:.4rem;">
+            <div class="lm lm-masheed" style="font-size:.9rem;">مشيد</div>
+            <div style="font-size:.5rem;color:rgba(0,0,0,.35);font-family:'Syne',sans-serif;letter-spacing:.08em;">PRESENTS</div>
+            <div class="lm lm-pc lm-sm">مجتمع المشاريع</div>
+          </div>
+        </div>
+        <div class="ex-note">التسلسل الهرمي الواضح يُعزز دور مشيد كمظلة ومنظِم</div>
+      </div>
+      <div class="ex-card">
+        <div class="ex-label ex-label--no">✕ مشيد والفرعية بحجم واحد</div>
+        <div class="ex-vis ex-vis--light">
+          <div class="no-overlay"></div>
+          <div class="flex ic" style="gap:.5rem;">
+            <div class="lm lm-masheed lm-sm">مشيد</div>
+            <div class="lm lm-pc lm-sm">مجتمع المشاريع</div>
+          </div>
+        </div>
+        <div class="ex-note">التساوي في الحجم دون فاصل أو هرمية يُشوّش على علاقة الأم بالفرعية</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 07 QUICK REFERENCE ═══ -->
+<div class="section section--light">
+  <div class="page-marker">07 / 07</div>
+  <span class="section-label">QUICK REFERENCE</span>
+  <h2 class="section-heading">بطاقة المرجع السريع</h2>
+  <p class="section-intro">للطباعة وإرفاقها مع كل بريف — إجابة فورية على أشيع الحالات.</p>
+
+  <table class="guide-table">
+    <thead><tr><th>الحالة</th><th>ما تظهره</th><th>مشيد؟</th><th>النمط</th></tr></thead>
+    <tbody>
+      <tr><td class="col-ctx">بروفايل انستقرام / تويتر</td><td>شعار الفرعية فقط</td><td>في Bio النصي</td><td>A</td></tr>
+      <tr><td class="col-ctx">Thumbnail يوتيوب</td><td>شعار الفرعية فقط</td><td>غائبة</td><td>A</td></tr>
+      <tr><td class="col-ctx">Intro الفيديو</td><td>شعار الفرعية فقط</td><td>غائبة</td><td>A</td></tr>
+      <tr><td class="col-ctx">Outro / End Card</td><td>مشيد وحدها</td><td>حضور كامل</td><td>مشيد فقط</td></tr>
+      <tr><td class="col-ctx">Watermark داخل الفيديو</td><td>الفرعية 30% opacity</td><td>غائبة</td><td>A</td></tr>
+      <tr><td class="col-ctx">وثائق رسمية / عقود</td><td>مشيد + الفرعية</td><td>حضور كامل</td><td>B</td></tr>
+      <tr><td class="col-ctx">كرت عمل</td><td>الفرعية أمامًا، مشيد خلفًا</td><td>ذيل</td><td>A</td></tr>
+      <tr><td class="col-ctx">بانر فعالية سباركس</td><td>سباركس فقط</td><td>Footer فقط</td><td>D</td></tr>
+      <tr><td class="col-ctx">Press Release</td><td>مشيد + الفرعية</td><td>حضور كامل</td><td>B</td></tr>
+      <tr><td class="col-ctx">Pitch Deck مستثمرين</td><td>مشيد كمظلة</td><td>مهيمنة</td><td>C</td></tr>
+      <tr><td class="col-ctx">تقرير سنوي</td><td>مشيد كمظلة</td><td>مهيمنة</td><td>C</td></tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:2.5rem;background:white;border:1px solid rgba(0,0,0,.07);border-radius:1rem;padding:2rem;">
+    <div style="font-size:.78rem;font-weight:700;margin-bottom:1.25rem;">السؤال الذهبي قبل كل تصميم</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;">
+      <div style="background:var(--masheed-light);border-radius:.6rem;padding:1rem 1.25rem;">
+        <div style="font-size:.8rem;font-weight:600;margin-bottom:.3rem;">① من الجمهور؟</div>
+        <div style="font-size:.75rem;color:var(--masheed-gray);">جمهور الفرعية → أخفِ مشيد<br>جمهور مشيد → أظهرهما</div>
+      </div>
+      <div style="background:var(--masheed-light);border-radius:.6rem;padding:1rem 1.25rem;">
+        <div style="font-size:.8rem;font-weight:600;margin-bottom:.3rem;">② ما الغرض؟</div>
+        <div style="font-size:.75rem;color:var(--masheed-gray);">محتوى = فرعية أولًا<br>وثيقة مؤسسية = مشيد أولًا</div>
+      </div>
+      <div style="background:var(--masheed-light);border-radius:.6rem;padding:1rem 1.25rem;">
+        <div style="font-size:.8rem;font-weight:600;margin-bottom:.3rem;">③ هل يضيف ظهور مشيد قيمة؟</div>
+        <div style="font-size:.75rem;color:var(--masheed-gray);">إذا لم يُضف قيمة فعلية — لا تضعه</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout"><strong>تذكّر:</strong> الجمهور يجب أن يعرف من يتحدث معه الآن. وضوح الهوية الفرعية يأتي دائمًا قبل إظهار مشيد في أي مادة تواجه الجمهور مباشرةً.</div>
+</div>
+
+<!-- ═══ CLOSING ═══ -->
 <div class="closing">
-  <h2>هوية واحدة<br>أربع أصوات</h2>
-  <p style="opacity:0.5;">Creative Lead: Mohamed Elboghdady</p>
+  <div>
+    <div class="c-label">END OF DOCUMENT</div>
+    <div class="c-title">هوية واحدة<br>أربع أصوات</div>
+    <div class="c-sub">مشيد القابضة — نبني علامات تتحدث بلغة جمهورها</div>
+  </div>
+  <div class="closing-brands">
+    <div class="closing-brand-row"><div class="cb-dot" style="background:var(--brand-pc);"></div><span>مجتمع المشاريع · Projects Community</span></div>
+    <div class="closing-brand-row"><div class="cb-dot" style="background:var(--brand-sp);"></div><span>مشاريع السعودية · Saudi Projects</span></div>
+    <div class="closing-brand-row"><div class="cb-dot" style="background:rgba(255,255,255,.4);"></div><span>بشت · Bsht</span></div>
+    <div class="closing-brand-row"><div class="cb-dot" style="background:var(--brand-sparx);"></div><span>سباركس · SPARX Forum</span></div>
+    <div style="margin-top:.75rem;padding-top:.75rem;border-top:1px solid rgba(255,255,255,.08);font-size:.62rem;color:rgba(255,255,255,.2);font-family:'Syne',sans-serif;">v2.0 · 2025 · Masheed Holding · Internal Use Only</div>
+  </div>
 </div>
 
 </body>
