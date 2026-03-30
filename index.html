@@ -6,17 +6,18 @@
 <title>Masheed — Brand Guidelines</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --bg:#0a0a0a;
   --text:#f5f5f0;
   --accent:#c9a96e;
-  --sub:#888;
-  --border:rgba(255,255,255,0.08);
-  --card-bg:rgba(255,255,255,0.03);
-  --card-hover:rgba(255,255,255,0.06);
+  --sub:#777;
+  --border:rgba(255,255,255,0.07);
+  --card:rgba(255,255,255,0.03);
+  --card-h:rgba(255,255,255,0.06);
+  --radius:16px;
 }
 html{scroll-behavior:smooth;font-size:16px}
 body{
@@ -26,91 +27,91 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 img{max-width:100%;display:block}
-
-/* ========== SCROLLBAR ========== */
-::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:rgba(201,169,110,0.3);border-radius:3px}
-::-webkit-scrollbar-thumb:hover{background:rgba(201,169,110,0.5)}
+::-webkit-scrollbar-thumb{background:rgba(201,169,110,0.25);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:rgba(201,169,110,0.45)}
 
-/* ========== NAVIGATION ========== */
+/* ===== NAV ===== */
 .nav{
   position:fixed;top:0;left:0;right:0;z-index:1000;
-  padding:0 40px;height:60px;
+  padding:0 40px;height:56px;
   display:flex;align-items:center;justify-content:space-between;
-  background:rgba(10,10,10,0.85);
-  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  background:rgba(10,10,10,0.8);
+  backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);
   border-bottom:1px solid var(--border);
-  transform:translateY(-100%);transition:transform 0.4s ease;
+  transform:translateY(-100%);transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);
 }
 .nav.show{transform:translateY(0)}
-.nav-logo{height:22px;opacity:0.9}
-.nav-links{display:flex;gap:28px}
+.nav-logo{height:20px;opacity:0.9}
+.nav-links{display:flex;gap:24px;flex-wrap:wrap}
 .nav-links a{
   color:var(--sub);text-decoration:none;
-  font-size:0.75rem;font-family:'Inter',sans-serif;
+  font-size:0.68rem;font-family:'Inter',sans-serif;
   letter-spacing:1.5px;transition:color 0.3s;
+  text-transform:uppercase;
 }
-.nav-links a:hover{color:var(--accent)}
+.nav-links a:hover,.nav-links a.active{color:var(--accent)}
 
-/* ========== COVER ========== */
+/* ===== COVER ===== */
 .cover{
   min-height:100vh;display:flex;flex-direction:column;
   align-items:center;justify-content:center;
-  text-align:center;position:relative;padding:60px 20px;overflow:hidden;
+  text-align:center;position:relative;padding:60px 20px;
 }
 .cover::before{
   content:'';position:absolute;inset:0;
   background:
-    radial-gradient(ellipse at 50% 0%,rgba(201,169,110,0.08) 0%,transparent 60%),
-    radial-gradient(ellipse at 50% 100%,rgba(201,169,110,0.04) 0%,transparent 50%);
+    radial-gradient(ellipse at 50% 0%,rgba(201,169,110,0.08) 0%,transparent 55%),
+    radial-gradient(ellipse at 50% 100%,rgba(201,169,110,0.04) 0%,transparent 45%);
   pointer-events:none;
 }
-.cover-logo{
-  height:55px;margin-bottom:45px;
-  opacity:0;animation:fadeDown 1s ease 0.2s forwards;
-}
+.cover-logo{height:55px;margin-bottom:45px;opacity:0;animation:fadeD 1s ease .2s forwards;position:relative;z-index:1}
 .cover-badge{
-  font-family:'Syne',sans-serif;font-size:0.7rem;
+  font-family:'Syne',sans-serif;font-size:.7rem;
   letter-spacing:6px;color:var(--accent);margin-bottom:28px;
-  opacity:0;animation:fadeDown 1s ease 0.4s forwards;
+  opacity:0;animation:fadeD 1s ease .4s forwards;position:relative;z-index:1;
 }
 .cover-title{
   font-family:'Noto Kufi Arabic',sans-serif;
   font-size:clamp(3rem,8vw,6.5rem);font-weight:800;
   line-height:1.15;margin-bottom:40px;
-  opacity:0;animation:fadeUp 1s ease 0.6s forwards;
+  opacity:0;animation:fadeU 1s ease .6s forwards;position:relative;z-index:1;
 }
 .cover-title span{color:var(--accent)}
 .cover-version{
-  font-family:'Inter',sans-serif;font-size:0.7rem;
+  font-family:'Inter',sans-serif;font-size:.7rem;
   letter-spacing:4px;color:var(--sub);
   position:absolute;bottom:40px;
-  opacity:0;animation:fadeUp 1s ease 1s forwards;
+  opacity:0;animation:fadeU 1s ease 1s forwards;
 }
 
-/* ========== SECTIONS ========== */
+/* ===== SECTIONS ===== */
 .section{
   max-width:1200px;margin:0 auto;
   padding:120px 40px;border-top:1px solid var(--border);
 }
 .section-label{
-  font-family:'Syne',sans-serif;font-size:0.7rem;
+  font-family:'Syne',sans-serif;font-size:.7rem;
   letter-spacing:4px;color:var(--accent);
-  display:block;margin-bottom:14px;
+  display:block;margin-bottom:14px;text-transform:uppercase;
 }
 .section-heading{
   font-family:'Noto Kufi Arabic',sans-serif;
   font-size:clamp(1.8rem,4vw,2.8rem);
-  font-weight:700;margin-bottom:60px;line-height:1.4;
+  font-weight:700;margin-bottom:20px;line-height:1.4;
+}
+.section-desc{
+  font-size:.95rem;color:var(--sub);max-width:700px;
+  margin-bottom:60px;line-height:2;
 }
 
-/* ========== PARENT BRAND ========== */
+/* ===== PARENT BRAND ===== */
 .parent-brand{
   display:flex;align-items:center;gap:40px;
-  background:var(--card-bg);border:1px solid var(--border);
+  background:var(--card);border:1px solid var(--border);
   border-radius:20px;padding:40px;margin-bottom:50px;
-  transition:border-color 0.4s;
+  transition:border-color .4s;
 }
 .parent-brand:hover{border-color:rgba(201,169,110,0.2)}
 .parent-visual{
@@ -120,101 +121,300 @@ img{max-width:100%;display:block}
 }
 .parent-visual img{max-height:85px;object-fit:contain}
 .parent-tag{
-  font-family:'Inter',sans-serif;font-size:0.65rem;
+  font-family:'Inter',sans-serif;font-size:.65rem;
   letter-spacing:3px;color:var(--accent);
   text-transform:uppercase;display:block;margin-bottom:8px;
 }
 .parent-info h3{font-size:1.5rem;font-weight:700;margin-bottom:4px}
-.parent-info p{font-family:'Inter',sans-serif;font-size:0.9rem;color:var(--sub)}
+.parent-info p{font-family:'Inter',sans-serif;font-size:.9rem;color:var(--sub)}
 
-/* ========== CONNECTOR ========== */
-.connector{
-  display:flex;flex-direction:column;
-  align-items:center;margin-bottom:30px;
-}
-.connector-line{
-  width:1px;height:45px;
-  background:linear-gradient(to bottom,var(--accent),transparent);
-  opacity:0.5;
-}
+/* ===== CONNECTOR ===== */
+.connector{display:flex;flex-direction:column;align-items:center;margin-bottom:30px}
+.connector-line{width:1px;height:45px;background:linear-gradient(to bottom,var(--accent),transparent);opacity:.5}
 
-/* ========== BRAND GRID ========== */
-.brand-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
-}
+/* ===== BRAND GRID ===== */
+.brand-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 .brand-card{
-  background:var(--card-bg);border:1px solid var(--border);
-  border-radius:16px;overflow:hidden;transition:all 0.4s ease;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);overflow:hidden;transition:all .4s ease;
 }
-.brand-card:hover{
-  border-color:rgba(201,169,110,0.3);
-  background:var(--card-hover);transform:translateY(-5px);
-}
-.brand-visual{
-  height:160px;background:var(--text);
-  display:flex;align-items:center;justify-content:center;padding:25px;
-}
+.brand-card:hover{border-color:rgba(201,169,110,.3);background:var(--card-h);transform:translateY(-5px)}
+.brand-visual{height:160px;background:var(--text);display:flex;align-items:center;justify-content:center;padding:25px}
 .brand-visual img{max-height:100px;object-fit:contain}
 .brand-info{padding:20px;text-align:center}
 .brand-info h3{font-size:1rem;font-weight:600;margin-bottom:4px}
-.brand-info p{font-family:'Inter',sans-serif;font-size:0.8rem;color:var(--sub)}
+.brand-info p{font-family:'Inter',sans-serif;font-size:.8rem;color:var(--sub)}
 
-/* ========== LOGO SYSTEM ========== */
-.logo-row{
-  margin-bottom:60px;padding-bottom:60px;
-  border-bottom:1px solid var(--border);
-}
+/* ===== LOGO ROWS ===== */
+.logo-row{margin-bottom:60px;padding-bottom:60px;border-bottom:1px solid var(--border)}
 .logo-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
 .logo-row-header{margin-bottom:24px}
 .logo-row-header h3{font-size:1.25rem;font-weight:600;margin-bottom:2px}
-.logo-row-header span{font-family:'Inter',sans-serif;font-size:0.85rem;color:var(--sub)}
-.logo-variants{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:16px;
+.logo-row-header span{font-family:'Inter',sans-serif;font-size:.85rem;color:var(--sub)}
+.logo-variants{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.vcard{border-radius:14px;overflow:hidden;border:1px solid var(--border);transition:all .3s ease}
+.vcard:hover{border-color:rgba(201,169,110,.25);transform:translateY(-3px)}
+.vcard-prev{height:130px;display:flex;align-items:center;justify-content:center;padding:24px}
+.vcard-prev img{max-height:75px;max-width:90%;object-fit:contain}
+.vcard.light .vcard-prev{background:#f5f5f0}
+.vcard.dark .vcard-prev{background:#141414}
+.vcard-lbl{display:block;padding:12px 16px;text-align:center;font-size:.73rem;color:var(--sub);background:var(--card)}
+
+/* ===== COLORS ===== */
+.color-brand{margin-bottom:60px;padding-bottom:60px;border-bottom:1px solid var(--border)}
+.color-brand:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.color-brand-header{display:flex;align-items:center;gap:16px;margin-bottom:24px}
+.color-brand-header img{height:28px}
+.color-brand-header h3{font-size:1.15rem;font-weight:600}
+.color-swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
+.swatch{border-radius:14px;overflow:hidden;border:1px solid var(--border);transition:all .3s}
+.swatch:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.12)}
+.swatch-color{height:100px;display:flex;align-items:flex-end;padding:12px}
+.swatch-info{padding:14px;background:var(--card)}
+.swatch-info .hex{font-family:'Inter',monospace;font-size:.85rem;font-weight:600;display:block;margin-bottom:2px}
+.swatch-info .name{font-size:.73rem;color:var(--sub)}
+
+/* ===== TYPOGRAPHY ===== */
+.type-block{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:40px;margin-bottom:24px;
+  transition:border-color .3s;
 }
-.variant-card{
-  border-radius:14px;overflow:hidden;
-  border:1px solid var(--border);transition:all 0.3s ease;
+.type-block:hover{border-color:rgba(201,169,110,.15)}
+.type-label{
+  font-family:'Inter',sans-serif;font-size:.65rem;
+  letter-spacing:3px;color:var(--accent);
+  text-transform:uppercase;margin-bottom:16px;display:block;
 }
-.variant-card:hover{
-  border-color:rgba(201,169,110,0.25);transform:translateY(-3px);
+.type-demo{margin-bottom:20px}
+.type-demo-ar{font-family:'Noto Kufi Arabic',sans-serif;font-size:2.5rem;font-weight:700;line-height:1.6}
+.type-demo-en{font-family:'Syne',sans-serif;font-size:2.5rem;font-weight:700;line-height:1.4}
+.type-body-en{font-family:'Inter',sans-serif;font-size:1.1rem;line-height:1.8;color:var(--sub)}
+.type-meta{display:flex;gap:30px;flex-wrap:wrap;margin-top:16px}
+.type-meta span{font-family:'Inter',sans-serif;font-size:.78rem;color:var(--sub)}
+.type-meta strong{color:var(--text);font-weight:500}
+.type-weights{display:flex;gap:20px;flex-wrap:wrap;margin-top:20px}
+.type-weights span{
+  padding:8px 18px;border-radius:8px;font-size:.8rem;
+  background:rgba(255,255,255,.04);border:1px solid var(--border);
 }
-.variant-preview{
-  height:130px;display:flex;align-items:center;
-  justify-content:center;padding:24px;
+.type-hierarchy{display:grid;gap:16px;margin-top:30px}
+.type-hierarchy div{
+  display:flex;align-items:baseline;gap:20px;
+  padding:16px 20px;background:rgba(255,255,255,.02);
+  border-radius:10px;border:1px solid var(--border);
 }
-.variant-preview img{max-height:75px;max-width:90%;object-fit:contain}
-.variant-card.light .variant-preview{background:#f5f5f0}
-.variant-card.dark .variant-preview{background:#141414}
-.variant-label{
-  display:block;padding:12px 16px;text-align:center;
-  font-size:0.73rem;color:var(--sub);background:var(--card-bg);
+.type-hierarchy .th-label{
+  font-family:'Inter',sans-serif;font-size:.68rem;
+  color:var(--accent);letter-spacing:2px;width:50px;flex-shrink:0;
 }
 
-/* ========== USAGE PATTERNS ========== */
-.context-grid{
-  display:grid;grid-template-columns:repeat(2,1fr);gap:24px;
-}
-.context-card{
-  background:var(--card-bg);border:1px solid var(--border);
-  border-radius:16px;overflow:hidden;transition:all 0.4s ease;
-}
-.context-card:hover{border-color:rgba(201,169,110,0.2)}
-.context-vis{
-  height:180px;background:var(--text);
+/* ===== CLEAR SPACE ===== */
+.clearspace-demo{
   display:flex;align-items:center;justify-content:center;
-  gap:30px;padding:30px;
+  padding:60px;margin-bottom:40px;
+}
+.cs-box{
+  position:relative;display:inline-flex;
+  align-items:center;justify-content:center;padding:40px;
+}
+.cs-box img{height:60px;position:relative;z-index:2}
+.cs-border{
+  position:absolute;inset:0;
+  border:1.5px dashed rgba(201,169,110,.35);
+  border-radius:10px;
+}
+.cs-mark{
+  position:absolute;font-family:'Inter',monospace;
+  font-size:.6rem;color:var(--accent);letter-spacing:1px;
+}
+.cs-mark.top{top:-18px;left:50%;transform:translateX(-50%)}
+.cs-mark.bottom{bottom:-18px;left:50%;transform:translateX(-50%)}
+.cs-mark.left{left:-30px;top:50%;transform:translateY(-50%) rotate(-90deg)}
+.cs-mark.right{right:-30px;top:50%;transform:translateY(-50%) rotate(90deg)}
+.cs-arrow{
+  position:absolute;background:rgba(201,169,110,.2);
+}
+.cs-arrow.h{height:1px;left:0;right:0}
+.cs-arrow.v{width:1px;top:0;bottom:0}
+.cs-arrow.at{top:0}.cs-arrow.ab{bottom:0}
+.cs-arrow.al{left:0}.cs-arrow.ar2{right:0}
+.min-sizes{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.min-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:14px;padding:30px;text-align:center;
+  transition:border-color .3s;
+}
+.min-card:hover{border-color:rgba(201,169,110,.15)}
+.min-card img{height:30px;margin:0 auto 16px}
+.min-card .min-val{font-family:'Inter',monospace;font-size:1.8rem;font-weight:700;color:var(--accent);display:block;margin-bottom:4px}
+.min-card .min-lbl{font-size:.78rem;color:var(--sub)}
+
+/* ===== PATTERNS ===== */
+.pattern-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.pattern-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);overflow:hidden;transition:all .4s;
+}
+.pattern-card:hover{border-color:rgba(201,169,110,.2)}
+.pattern-vis{
+  height:200px;background:var(--text);
+  display:flex;align-items:center;justify-content:center;
+  gap:24px;padding:30px;position:relative;
+}
+.pattern-badge{
+  position:absolute;top:14px;right:14px;
+  font-family:'Inter',sans-serif;font-size:.6rem;
+  letter-spacing:2px;color:#666;
+  background:rgba(0,0,0,.06);padding:4px 10px;border-radius:6px;
 }
 .divider-v{width:1px;height:40px;background:#ccc}
-.context-info{padding:24px}
-.context-info h3{
-  font-size:1rem;font-weight:600;
-  margin-bottom:10px;color:var(--accent);
-}
-.context-info p{font-size:0.85rem;color:var(--sub);line-height:1.8}
+.pattern-info{padding:24px}
+.pattern-info h3{font-size:1rem;font-weight:600;margin-bottom:10px;color:var(--accent)}
+.pattern-info p{font-size:.85rem;color:var(--sub);line-height:1.9}
 
-/* ========== CLOSING ========== */
+/* ===== DO'S & DON'TS ===== */
+.rules-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.rule-card{
+  border-radius:var(--radius);overflow:hidden;
+  border:1px solid var(--border);transition:all .3s;
+}
+.rule-card:hover{transform:translateY(-3px)}
+.rule-card.do{border-color:rgba(34,197,94,.2)}
+.rule-card.dont{border-color:rgba(239,68,68,.2)}
+.rule-prev{
+  height:160px;background:var(--text);
+  display:flex;align-items:center;justify-content:center;padding:24px;
+  position:relative;
+}
+.rule-tag{
+  position:absolute;top:12px;left:12px;
+  font-family:'Inter',sans-serif;font-size:.65rem;
+  letter-spacing:2px;font-weight:600;
+  padding:4px 12px;border-radius:6px;
+}
+.rule-card.do .rule-tag{background:rgba(34,197,94,.12);color:#22c55e}
+.rule-card.dont .rule-tag{background:rgba(239,68,68,.12);color:#ef4444}
+.rule-desc{padding:16px 20px;background:var(--card);font-size:.82rem;color:var(--sub)}
+
+/* ===== APPLICATIONS ===== */
+.app-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.app-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);overflow:hidden;
+  transition:all .4s;
+}
+.app-card:hover{border-color:rgba(201,169,110,.2);transform:translateY(-5px)}
+.app-mock{
+  height:220px;position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;padding:24px;
+}
+/* Business Card */
+.mock-bizcard{
+  width:180px;height:110px;background:linear-gradient(135deg,#111 0%,#1a1a1a 100%);
+  border-radius:8px;padding:16px;display:flex;flex-direction:column;
+  justify-content:space-between;box-shadow:0 10px 30px rgba(0,0,0,.4);
+  position:relative;
+}
+.mock-bizcard img{height:18px;align-self:flex-start}
+.mock-bizcard-lines{display:flex;flex-direction:column;gap:3px}
+.mock-bizcard-lines span{
+  display:block;height:2px;border-radius:1px;
+  background:rgba(255,255,255,.15);
+}
+.mock-bizcard-lines span:nth-child(1){width:60%}
+.mock-bizcard-lines span:nth-child(2){width:45%}
+.mock-bizcard-lines span:nth-child(3){width:35%}
+/* Letterhead */
+.mock-letter{
+  width:150px;height:190px;background:#fff;
+  border-radius:4px;padding:14px;
+  box-shadow:0 10px 30px rgba(0,0,0,.3);
+  display:flex;flex-direction:column;
+}
+.mock-letter img{height:16px;margin-bottom:14px;align-self:flex-start}
+.mock-letter-lines{display:flex;flex-direction:column;gap:4px;flex:1}
+.mock-letter-lines span{display:block;height:1.5px;background:#e5e5e5;border-radius:1px}
+.mock-letter-lines span:nth-child(odd){width:100%}
+.mock-letter-lines span:nth-child(even){width:75%}
+.mock-letter-footer{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end}
+.mock-letter-footer span{display:block;height:1px;width:30%;background:#ddd}
+/* Social */
+.mock-social{
+  width:170px;height:170px;background:linear-gradient(135deg,#0f0f0f,#1a1a1a);
+  border-radius:12px;overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+  display:flex;flex-direction:column;
+}
+.mock-social-header{
+  padding:10px;display:flex;align-items:center;gap:6px;
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+.mock-social-avatar{width:16px;height:16px;border-radius:50%;background:rgba(201,169,110,.3)}
+.mock-social-name{font-family:'Inter',sans-serif;font-size:.5rem;color:rgba(255,255,255,.5)}
+.mock-social-body{flex:1;display:flex;align-items:center;justify-content:center;padding:16px}
+.mock-social-body img{max-height:40px;max-width:80%}
+/* Phone */
+.mock-phone{
+  width:110px;height:200px;background:#111;
+  border-radius:18px;padding:8px;
+  box-shadow:0 10px 30px rgba(0,0,0,.5);
+  border:2px solid #222;
+}
+.mock-phone-screen{
+  width:100%;height:100%;background:#0a0a0a;
+  border-radius:12px;overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:8px;padding:12px;
+}
+.mock-phone-screen img{max-height:24px}
+.mock-phone-lines{display:flex;flex-direction:column;gap:3px;width:70%}
+.mock-phone-lines span{display:block;height:1.5px;background:rgba(255,255,255,.1);border-radius:1px}
+/* Merch */
+.mock-merch{
+  width:130px;height:160px;
+  background:linear-gradient(180deg,#1a1a1a 0%,#111 100%);
+  border-radius:4px 4px 0 0;position:relative;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+.mock-merch::before{
+  content:'';position:absolute;top:0;left:50%;
+  transform:translateX(-50%);
+  width:20px;height:8px;background:#222;
+  border-radius:0 0 4px 4px;
+}
+.mock-merch img{max-height:35px;opacity:.9}
+/* Website */
+.mock-web{
+  width:200px;height:140px;background:#0e0e0e;
+  border-radius:8px;overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+  border:1px solid #222;
+}
+.mock-web-bar{
+  height:16px;background:#161616;
+  display:flex;align-items:center;padding:0 6px;gap:3px;
+  border-bottom:1px solid #222;
+}
+.mock-web-dot{width:4px;height:4px;border-radius:50%;background:#333}
+.mock-web-content{
+  padding:12px;display:flex;flex-direction:column;
+  align-items:center;gap:8px;
+}
+.mock-web-content img{max-height:20px}
+.mock-web-lines{display:flex;flex-direction:column;gap:3px;width:80%;align-items:center}
+.mock-web-lines span{display:block;height:1.5px;background:rgba(255,255,255,.08);border-radius:1px}
+.mock-web-lines span:nth-child(1){width:70%}
+.mock-web-lines span:nth-child(2){width:50%}
+.mock-web-btn{
+  margin-top:4px;padding:3px 14px;border-radius:4px;
+  background:rgba(201,169,110,.15);
+  font-size:.4rem;color:var(--accent);font-family:'Inter',sans-serif;
+}
+.app-label{padding:16px 20px;text-align:center;font-size:.82rem;color:var(--sub);background:var(--card)}
+
+/* ===== CLOSING ===== */
 .closing{
   min-height:60vh;display:flex;align-items:center;
   justify-content:center;text-align:center;
@@ -222,7 +422,7 @@ img{max-width:100%;display:block}
 }
 .closing::before{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at 50% 50%,rgba(201,169,110,0.06) 0%,transparent 70%);
+  background:radial-gradient(ellipse at 50% 50%,rgba(201,169,110,.06) 0%,transparent 70%);
   pointer-events:none;
 }
 .closing-text{position:relative;z-index:1}
@@ -231,67 +431,63 @@ img{max-width:100%;display:block}
   font-size:clamp(2rem,5vw,3.5rem);
   font-weight:800;line-height:1.4;margin-bottom:30px;
 }
-.end-badge{
-  font-family:'Syne',sans-serif;font-size:0.7rem;
-  color:var(--accent);letter-spacing:3px;margin-bottom:20px;
-}
-.credits{
-  margin-top:40px;font-size:0.85rem;
-  font-family:'Inter',sans-serif;opacity:0.3;
-}
+.end-badge{font-family:'Syne',sans-serif;font-size:.7rem;color:var(--accent);letter-spacing:3px;margin-bottom:20px}
+.credits{margin-top:40px;font-size:.85rem;font-family:'Inter',sans-serif;opacity:.3}
 
-/* ========== ANIMATIONS ========== */
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(30px)}
-  to{opacity:1;transform:translateY(0)}
-}
-@keyframes fadeDown{
-  from{opacity:0;transform:translateY(-20px)}
-  to{opacity:1;transform:translateY(0)}
-}
-.reveal{
-  opacity:0;transform:translateY(40px);
-  transition:all 0.8s cubic-bezier(0.16,1,0.3,1);
-}
+/* ===== ANIMATIONS ===== */
+@keyframes fadeU{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeD{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.16,1,.3,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
-.reveal.d1{transition-delay:0.05s}
-.reveal.d2{transition-delay:0.1s}
-.reveal.d3{transition-delay:0.15s}
-.reveal.d4{transition-delay:0.2s}
+.reveal.d1{transition-delay:.05s}.reveal.d2{transition-delay:.1s}
+.reveal.d3{transition-delay:.15s}.reveal.d4{transition-delay:.2s}
+.reveal.d5{transition-delay:.25s}.reveal.d6{transition-delay:.3s}
 
-/* ========== RESPONSIVE ========== */
-@media(max-width:900px){
+/* ===== RESPONSIVE ===== */
+@media(max-width:1000px){
   .brand-grid{grid-template-columns:repeat(2,1fr)}
-  .context-grid{grid-template-columns:1fr}
+  .app-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:800px){
+  .pattern-grid,.rules-grid{grid-template-columns:1fr}
   .parent-brand{flex-direction:column;text-align:center}
   .parent-visual{width:100%;max-width:260px}
   .section{padding:80px 24px}
-  .nav{padding:0 20px}
-  .nav-links{gap:16px}
+  .nav{padding:0 16px}
+  .nav-links{gap:12px}
+  .type-demo-ar,.type-demo-en{font-size:1.8rem}
 }
 @media(max-width:600px){
   .brand-grid{grid-template-columns:1fr}
+  .app-grid{grid-template-columns:1fr}
   .logo-variants{grid-template-columns:repeat(2,1fr)}
+  .color-swatches{grid-template-columns:repeat(2,1fr)}
   .section{padding:60px 16px}
   .cover-logo{height:40px}
-  .nav-links a{font-size:0.65rem}
-  .nav-links{gap:12px}
+  .nav-links a{font-size:.6rem;letter-spacing:1px}
+  .nav-links{gap:8px}
+  .min-sizes{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
-<!-- ========== NAVIGATION ========== -->
+<!-- ===== NAVIGATION ===== -->
 <nav class="nav" id="nav">
   <img src="Masheed%20White.svg" class="nav-logo" alt="Masheed">
   <div class="nav-links">
     <a href="#architecture">الهيكل</a>
     <a href="#logos">الشعارات</a>
+    <a href="#colors">الألوان</a>
+    <a href="#typography">الخطوط</a>
+    <a href="#clearspace">المساحات</a>
     <a href="#patterns">الأنماط</a>
+    <a href="#rules">القواعد</a>
+    <a href="#apps">التطبيقات</a>
   </div>
 </nav>
 
-<!-- ========== COVER ========== -->
+<!-- ===== COVER ===== -->
 <div class="cover">
   <img src="Masheed%20White.svg" class="cover-logo" alt="Masheed">
   <div class="cover-badge">MASHEED · 2026</div>
@@ -299,10 +495,11 @@ img{max-width:100%;display:block}
   <div class="cover-version">BRAND GUIDELINES V1.0</div>
 </div>
 
-<!-- ========== 01 BRAND ARCHITECTURE ========== -->
+<!-- ===== 01 — BRAND ARCHITECTURE ===== -->
 <section class="section" id="architecture">
   <span class="section-label reveal">01 / BRAND ARCHITECTURE</span>
   <h2 class="section-heading reveal">هيكل العلامات التجارية</h2>
+  <p class="section-desc reveal">تعمل مشيد كمظلة تضم أربع علامات تجارية فرعية، كل منها تحمل هوية بصرية مستقلة ضمن إطار موحد يعكس الانتماء للعلامة الأم.</p>
 
   <div class="parent-brand reveal">
     <div class="parent-visual">
@@ -315,247 +512,473 @@ img{max-width:100%;display:block}
     </div>
   </div>
 
-  <div class="connector reveal">
-    <div class="connector-line"></div>
-  </div>
+  <div class="connector reveal"><div class="connector-line"></div></div>
 
   <div class="brand-grid">
     <div class="brand-card reveal d1">
-      <div class="brand-visual">
-        <img src="Projects%20comm.svg" alt="Projects Community">
-      </div>
-      <div class="brand-info">
-        <h3>مجتمع المشاريع</h3>
-        <p>Projects Community</p>
-      </div>
+      <div class="brand-visual"><img src="Projects%20comm.svg" alt="PC"></div>
+      <div class="brand-info"><h3>مجتمع المشاريع</h3><p>Projects Community</p></div>
     </div>
     <div class="brand-card reveal d2">
-      <div class="brand-visual">
-        <img src="Ar%20logo%20white%20BG.svg" alt="Saudi Projects">
-      </div>
-      <div class="brand-info">
-        <h3>مشاريع السعودية</h3>
-        <p>Saudi Projects</p>
-      </div>
+      <div class="brand-visual"><img src="Ar%20logo%20white%20BG.svg" alt="SP"></div>
+      <div class="brand-info"><h3>مشاريع السعودية</h3><p>Saudi Projects</p></div>
     </div>
     <div class="brand-card reveal d3">
-      <div class="brand-visual">
-        <img src="Bisht.svg" alt="Bisht">
-      </div>
-      <div class="brand-info">
-        <h3>بشت</h3>
-        <p>Bisht</p>
-      </div>
+      <div class="brand-visual"><img src="Bisht.svg" alt="Bisht"></div>
+      <div class="brand-info"><h3>بشت</h3><p>Bisht</p></div>
     </div>
     <div class="brand-card reveal d4">
-      <div class="brand-visual">
-        <img src="Asset%2013.svg" alt="SPARX">
-      </div>
-      <div class="brand-info">
-        <h3>سباركس</h3>
-        <p>SPARX</p>
-      </div>
+      <div class="brand-visual"><img src="Asset%2013.svg" alt="SPARX"></div>
+      <div class="brand-info"><h3>سباركس</h3><p>SPARX</p></div>
     </div>
   </div>
 </section>
 
-<!-- ========== 02 LOGO SYSTEM ========== -->
+<!-- ===== 02 — LOGO SYSTEM ===== -->
 <section class="section" id="logos">
   <span class="section-label reveal">02 / LOGO SYSTEM</span>
   <h2 class="section-heading reveal">منظومة الشعارات</h2>
+  <p class="section-desc reveal">تشمل منظومة الشعارات جميع النسخ المعتمدة لكل علامة تجارية، بما في ذلك النسخة الكاملة والمختصرة والأيقونات بألوانها المختلفة.</p>
 
   <!-- Masheed -->
   <div class="logo-row reveal">
-    <div class="logo-row-header">
-      <h3>مشيد</h3>
-      <span>Masheed</span>
-    </div>
+    <div class="logo-row-header"><h3>مشيد</h3><span>Masheed — العلامة الأم</span></div>
     <div class="logo-variants">
-      <div class="variant-card light">
-        <div class="variant-preview">
-          <img src="Logo%20with%20slogan.svg" alt="Masheed Full Logo">
-        </div>
-        <span class="variant-label">الشعار مع الشعار النصي</span>
-      </div>
-      <div class="variant-card dark">
-        <div class="variant-preview">
-          <img src="Masheed%20White.svg" alt="Masheed White">
-        </div>
-        <span class="variant-label">النسخة البيضاء</span>
-      </div>
+      <div class="vcard light"><div class="vcard-prev"><img src="Logo%20with%20slogan.svg" alt=""></div><span class="vcard-lbl">الشعار مع الشعار النصي</span></div>
+      <div class="vcard dark"><div class="vcard-prev"><img src="Masheed%20White.svg" alt=""></div><span class="vcard-lbl">النسخة البيضاء</span></div>
     </div>
   </div>
 
   <!-- Projects Community -->
   <div class="logo-row reveal">
-    <div class="logo-row-header">
-      <h3>مجتمع المشاريع</h3>
-      <span>Projects Community</span>
-    </div>
+    <div class="logo-row-header"><h3>مجتمع المشاريع</h3><span>Projects Community</span></div>
     <div class="logo-variants">
-      <div class="variant-card light">
-        <div class="variant-preview">
-          <img src="Projects%20comm.svg" alt="PC Full">
-        </div>
-        <span class="variant-label">الشعار الكامل</span>
-      </div>
-      <div class="variant-card dark">
-        <div class="variant-preview">
-          <img src="PC%20white.svg" alt="PC White">
-        </div>
-        <span class="variant-label">النسخة البيضاء</span>
-      </div>
-      <div class="variant-card light">
-        <div class="variant-preview">
-          <img src="PC%20icon%20Color.svg" alt="PC Icon Color">
-        </div>
-        <span class="variant-label">الأيقونة الملونة</span>
-      </div>
-      <div class="variant-card dark">
-        <div class="variant-preview">
-          <img src="PC%20icon%20white.svg" alt="PC Icon White">
-        </div>
-        <span class="variant-label">الأيقونة البيضاء</span>
-      </div>
+      <div class="vcard light"><div class="vcard-prev"><img src="Projects%20comm.svg" alt=""></div><span class="vcard-lbl">الشعار الكامل</span></div>
+      <div class="vcard dark"><div class="vcard-prev"><img src="PC%20white.svg" alt=""></div><span class="vcard-lbl">النسخة البيضاء</span></div>
+      <div class="vcard light"><div class="vcard-prev"><img src="PC%20icon%20Color.svg" alt=""></div><span class="vcard-lbl">الأيقونة الملونة</span></div>
+      <div class="vcard dark"><div class="vcard-prev"><img src="PC%20icon%20white.svg" alt=""></div><span class="vcard-lbl">الأيقونة البيضاء</span></div>
     </div>
   </div>
 
   <!-- Saudi Projects -->
   <div class="logo-row reveal">
-    <div class="logo-row-header">
-      <h3>مشاريع السعودية</h3>
-      <span>Saudi Projects</span>
-    </div>
+    <div class="logo-row-header"><h3>مشاريع السعودية</h3><span>Saudi Projects</span></div>
     <div class="logo-variants">
-      <div class="variant-card light">
-        <div class="variant-preview">
-          <img src="Ar%20logo%20white%20BG.svg" alt="Saudi Projects Full">
-        </div>
-        <span class="variant-label">الشعار الكامل</span>
-      </div>
-      <div class="variant-card dark">
-        <div class="variant-preview">
-          <img src="Saudi%20Projects%20White.svg" alt="Saudi Projects White">
-        </div>
-        <span class="variant-label">النسخة البيضاء</span>
-      </div>
-      <div class="variant-card light">
-        <div class="variant-preview">
-          <img src="Saudi%20Projects%20icon%20color.svg" alt="SP Icon Color">
-        </div>
-        <span class="variant-label">الأيقونة الملونة</span>
-      </div>
-      <div class="variant-card dark">
-        <div class="variant-preview">
-          <img src="Saudi%20Projects%20icon%20white.svg" alt="SP Icon White">
-        </div>
-        <span class="variant-label">الأيقونة البيضاء</span>
-      </div>
+      <div class="vcard light"><div class="vcard-prev"><img src="Ar%20logo%20white%20BG.svg" alt=""></div><span class="vcard-lbl">الشعار الكامل</span></div>
+      <div class="vcard dark"><div class="vcard-prev"><img src="Saudi%20Projects%20White.svg" alt=""></div><span class="vcard-lbl">النسخة البيضاء</span></div>
+      <div class="vcard light"><div class="vcard-prev"><img src="Saudi%20Projects%20icon%20color.svg" alt=""></div><span class="vcard-lbl">الأيقونة الملونة</span></div>
+      <div class="vcard dark"><div class="vcard-prev"><img src="Saudi%20Projects%20icon%20white.svg" alt=""></div><span class="vcard-lbl">الأيقونة البيضاء</span></div>
     </div>
   </div>
 
   <!-- Bisht -->
   <div class="logo-row reveal">
-    <div class="logo-row-header">
-      <h3>بشت</h3>
-      <span>Bisht</span>
-    </div>
+    <div class="logo-row-header"><h3>بشت</h3><span>Bisht</span></div>
     <div class="logo-variants">
-      <div class="variant-card light">
-        <div class="variant-preview">
-          <img src="Bisht.svg" alt="Bisht Full">
-        </div>
-        <span class="variant-label">الشعار الكامل</span>
-      </div>
-      <div class="variant-card dark">
-        <div class="variant-preview">
-          <img src="Bisht%20white.svg" alt="Bisht White">
-        </div>
-        <span class="variant-label">النسخة البيضاء</span>
-      </div>
-      <div class="variant-card light">
-        <div class="variant-preview">
-          <img src="Bish%20icon%20color.svg" alt="Bisht Icon Color">
-        </div>
-        <span class="variant-label">الأيقونة الملونة</span>
-      </div>
-      <div class="variant-card dark">
-        <div class="variant-preview">
-          <img src="Bish%20icon%20white.svg" alt="Bisht Icon White">
-        </div>
-        <span class="variant-label">الأيقونة البيضاء</span>
-      </div>
+      <div class="vcard light"><div class="vcard-prev"><img src="Bisht.svg" alt=""></div><span class="vcard-lbl">الشعار الكامل</span></div>
+      <div class="vcard dark"><div class="vcard-prev"><img src="Bisht%20white.svg" alt=""></div><span class="vcard-lbl">النسخة البيضاء</span></div>
+      <div class="vcard light"><div class="vcard-prev"><img src="Bish%20icon%20color.svg" alt=""></div><span class="vcard-lbl">الأيقونة الملونة</span></div>
+      <div class="vcard dark"><div class="vcard-prev"><img src="Bish%20icon%20white.svg" alt=""></div><span class="vcard-lbl">الأيقونة البيضاء</span></div>
     </div>
   </div>
 
   <!-- SPARX -->
   <div class="logo-row reveal">
-    <div class="logo-row-header">
-      <h3>سباركس</h3>
-      <span>SPARX</span>
-    </div>
+    <div class="logo-row-header"><h3>سباركس</h3><span>SPARX</span></div>
     <div class="logo-variants">
-      <div class="variant-card light">
-        <div class="variant-preview">
-          <img src="Asset%2013.svg" alt="SPARX Full">
-        </div>
-        <span class="variant-label">الشعار الكامل</span>
-      </div>
-      <div class="variant-card dark">
-        <div class="variant-preview">
-          <img src="sparx%20white.svg" alt="SPARX White">
-        </div>
-        <span class="variant-label">النسخة البيضاء</span>
-      </div>
-      <div class="variant-card light">
-        <div class="variant-preview">
-          <img src="Sparks%20icon.svg" alt="SPARX Icon">
-        </div>
-        <span class="variant-label">الأيقونة الملونة</span>
-      </div>
-      <div class="variant-card dark">
-        <div class="variant-preview">
-          <img src="Sparks%20icon%20white.svg" alt="SPARX Icon White">
-        </div>
-        <span class="variant-label">الأيقونة البيضاء</span>
-      </div>
+      <div class="vcard light"><div class="vcard-prev"><img src="Asset%2013.svg" alt=""></div><span class="vcard-lbl">الشعار الكامل</span></div>
+      <div class="vcard dark"><div class="vcard-prev"><img src="sparx%20white.svg" alt=""></div><span class="vcard-lbl">النسخة البيضاء</span></div>
+      <div class="vcard light"><div class="vcard-prev"><img src="Sparks%20icon.svg" alt=""></div><span class="vcard-lbl">الأيقونة الملونة</span></div>
+      <div class="vcard dark"><div class="vcard-prev"><img src="Sparks%20icon%20white.svg" alt=""></div><span class="vcard-lbl">الأيقونة البيضاء</span></div>
     </div>
   </div>
 </section>
 
-<!-- ========== 03 USAGE PATTERNS ========== -->
-<section class="section" id="patterns">
-  <span class="section-label reveal">03 / USAGE CONTEXTS</span>
-  <h2 class="section-heading reveal">قواعد التنسيق</h2>
+<!-- ===== 03 — COLOR PALETTE ===== -->
+<section class="section" id="colors">
+  <span class="section-label reveal">03 / COLOR PALETTE</span>
+  <h2 class="section-heading reveal">لوحة الألوان</h2>
+  <p class="section-desc reveal">لكل علامة تجارية لوحة ألوان معتمدة تعكس شخصيتها المستقلة مع الحفاظ على الانسجام ضمن المنظومة.</p>
 
-  <div class="context-grid">
-    <div class="context-card reveal d1">
-      <div class="context-vis">
-        <img src="Logo%20with%20slogan.svg" style="max-height:45px;" alt="Masheed Logo">
-        <div class="divider-v"></div>
-        <img src="Ar%20logo%20white%20BG.svg" style="max-height:45px;" alt="Saudi Projects">
+  <!-- Masheed Colors -->
+  <div class="color-brand reveal">
+    <div class="color-brand-header"><h3>مشيد — Masheed</h3></div>
+    <div class="color-swatches">
+      <div class="swatch"><div class="swatch-color" style="background:#C9A96E"></div><div class="swatch-info"><span class="hex">#C9A96E</span><span class="name">Masheed Gold</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#0A0A0A"></div><div class="swatch-info"><span class="hex">#0A0A0A</span><span class="name">Deep Black</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#F5F5F0"></div><div class="swatch-info"><span class="hex">#F5F5F0</span><span class="name">Warm White</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#1A1A1A"></div><div class="swatch-info"><span class="hex">#1A1A1A</span><span class="name">Charcoal</span></div></div>
+    </div>
+  </div>
+
+  <!-- Projects Community Colors -->
+  <div class="color-brand reveal">
+    <div class="color-brand-header"><h3>مجتمع المشاريع — Projects Community</h3></div>
+    <div class="color-swatches">
+      <div class="swatch"><div class="swatch-color" style="background:#3B82F6"></div><div class="swatch-info"><span class="hex">#3B82F6</span><span class="name">Community Blue</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#1E3A5F"></div><div class="swatch-info"><span class="hex">#1E3A5F</span><span class="name">Deep Navy</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#93C5FD"></div><div class="swatch-info"><span class="hex">#93C5FD</span><span class="name">Light Blue</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#0F172A"></div><div class="swatch-info"><span class="hex">#0F172A</span><span class="name">Midnight</span></div></div>
+    </div>
+  </div>
+
+  <!-- Saudi Projects Colors -->
+  <div class="color-brand reveal">
+    <div class="color-brand-header"><h3>مشاريع السعودية — Saudi Projects</h3></div>
+    <div class="color-swatches">
+      <div class="swatch"><div class="swatch-color" style="background:#10B981"></div><div class="swatch-info"><span class="hex">#10B981</span><span class="name">Saudi Green</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#064E3B"></div><div class="swatch-info"><span class="hex">#064E3B</span><span class="name">Deep Forest</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#6EE7B7"></div><div class="swatch-info"><span class="hex">#6EE7B7</span><span class="name">Mint</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#F5F5F0"></div><div class="swatch-info"><span class="hex">#F5F5F0</span><span class="name">Warm White</span></div></div>
+    </div>
+  </div>
+
+  <!-- Bisht Colors -->
+  <div class="color-brand reveal">
+    <div class="color-brand-header"><h3>بشت — Bisht</h3></div>
+    <div class="color-swatches">
+      <div class="swatch"><div class="swatch-color" style="background:#A0845C"></div><div class="swatch-info"><span class="hex">#A0845C</span><span class="name">Bisht Brown</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#4A3728"></div><div class="swatch-info"><span class="hex">#4A3728</span><span class="name">Dark Earth</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#D4C5A9"></div><div class="swatch-info"><span class="hex">#D4C5A9</span><span class="name">Sand</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#2C1F14"></div><div class="swatch-info"><span class="hex">#2C1F14</span><span class="name">Espresso</span></div></div>
+    </div>
+  </div>
+
+  <!-- SPARX Colors -->
+  <div class="color-brand reveal">
+    <div class="color-brand-header"><h3>سباركس — SPARX</h3></div>
+    <div class="color-swatches">
+      <div class="swatch"><div class="swatch-color" style="background:#EF4444"></div><div class="swatch-info"><span class="hex">#EF4444</span><span class="name">Spark Red</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#F97316"></div><div class="swatch-info"><span class="hex">#F97316</span><span class="name">Electric Orange</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#FCA5A5"></div><div class="swatch-info"><span class="hex">#FCA5A5</span><span class="name">Soft Coral</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#1C1917"></div><div class="swatch-info"><span class="hex">#1C1917</span><span class="name">Smoke Black</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 04 — TYPOGRAPHY ===== -->
+<section class="section" id="typography">
+  <span class="section-label reveal">04 / TYPOGRAPHY</span>
+  <h2 class="section-heading reveal">الخطوط المعتمدة</h2>
+  <p class="section-desc reveal">تعتمد المنظومة على ثلاثة خطوط رئيسية تغطي المحتوى العربي والإنجليزي، مع تدرج واضح في الأحجام والأوزان.</p>
+
+  <div class="type-block reveal">
+    <span class="type-label">ARABIC TYPEFACE</span>
+    <div class="type-demo"><span class="type-demo-ar">نوتو كوفي عربي</span></div>
+    <div class="type-meta">
+      <span>الخط: <strong>Noto Kufi Arabic</strong></span>
+      <span>الاستخدام: <strong>العناوين والنصوص العربية</strong></span>
+    </div>
+    <div class="type-weights">
+      <span style="font-family:'Noto Kufi Arabic';font-weight:300">Light 300</span>
+      <span style="font-family:'Noto Kufi Arabic';font-weight:400">Regular 400</span>
+      <span style="font-family:'Noto Kufi Arabic';font-weight:600">SemiBold 600</span>
+      <span style="font-family:'Noto Kufi Arabic';font-weight:800">ExtraBold 800</span>
+    </div>
+  </div>
+
+  <div class="type-block reveal">
+    <span class="type-label">ENGLISH DISPLAY</span>
+    <div class="type-demo"><span class="type-demo-en">Syne Typeface</span></div>
+    <div class="type-meta">
+      <span>Font: <strong>Syne</strong></span>
+      <span>Usage: <strong>English Headings & Display</strong></span>
+    </div>
+    <div class="type-weights">
+      <span style="font-family:'Syne';font-weight:400">Regular 400</span>
+      <span style="font-family:'Syne';font-weight:600">SemiBold 600</span>
+      <span style="font-family:'Syne';font-weight:700">Bold 700</span>
+      <span style="font-family:'Syne';font-weight:800">ExtraBold 800</span>
+    </div>
+  </div>
+
+  <div class="type-block reveal">
+    <span class="type-label">ENGLISH BODY</span>
+    <div class="type-demo"><span class="type-body-en">Inter — Clean, modern, highly legible typeface designed for screens.</span></div>
+    <div class="type-meta">
+      <span>Font: <strong>Inter</strong></span>
+      <span>Usage: <strong>Body Text, Captions, UI</strong></span>
+    </div>
+    <div class="type-weights">
+      <span style="font-family:'Inter';font-weight:300">Light 300</span>
+      <span style="font-family:'Inter';font-weight:400">Regular 400</span>
+      <span style="font-family:'Inter';font-weight:500">Medium 500</span>
+      <span style="font-family:'Inter';font-weight:600">SemiBold 600</span>
+    </div>
+  </div>
+
+  <!-- Type Hierarchy -->
+  <div class="type-block reveal" style="margin-top:24px">
+    <span class="type-label">TYPE HIERARCHY</span>
+    <div class="type-hierarchy">
+      <div><span class="th-label">H1</span><span style="font-family:'Noto Kufi Arabic';font-size:2.5rem;font-weight:800">العنوان الرئيسي</span></div>
+      <div><span class="th-label">H2</span><span style="font-family:'Noto Kufi Arabic';font-size:1.8rem;font-weight:700">العنوان الثانوي</span></div>
+      <div><span class="th-label">H3</span><span style="font-family:'Noto Kufi Arabic';font-size:1.3rem;font-weight:600">العنوان الفرعي</span></div>
+      <div><span class="th-label">Body</span><span style="font-family:'Noto Kufi Arabic';font-size:1rem;font-weight:400;color:var(--sub)">هذا نص تجريبي يُستخدم لعرض حجم النص الأساسي في التصاميم</span></div>
+      <div><span class="th-label">Cap</span><span style="font-family:'Inter';font-size:.75rem;font-weight:400;color:var(--sub);letter-spacing:2px">CAPTION / LABEL TEXT</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 05 — CLEAR SPACE ===== -->
+<section class="section" id="clearspace">
+  <span class="section-label reveal">05 / CLEAR SPACE & SIZING</span>
+  <h2 class="section-heading reveal">المساحات الآمنة والأحجام</h2>
+  <p class="section-desc reveal">يجب الحفاظ على مساحة فارغة حول الشعار تعادل ارتفاع حرف "م" من الشعار على الأقل من جميع الجهات لضمان وضوح العلامة.</p>
+
+  <div class="clearspace-demo reveal">
+    <div class="cs-box">
+      <img src="Logo%20with%20slogan.svg" alt="Masheed">
+      <div class="cs-border"></div>
+      <span class="cs-mark top">X</span>
+      <span class="cs-mark bottom">X</span>
+      <span class="cs-mark left">X</span>
+      <span class="cs-mark right">X</span>
+      <div class="cs-arrow h at" style="top:0"></div>
+      <div class="cs-arrow h ab" style="bottom:0"></div>
+      <div class="cs-arrow v al" style="left:0"></div>
+      <div class="cs-arrow v ar2" style="right:0"></div>
+    </div>
+  </div>
+
+  <div class="min-sizes">
+    <div class="min-card reveal d1">
+      <img src="Logo%20with%20slogan.svg" alt="">
+      <span class="min-val">120px</span>
+      <span class="min-lbl">الحد الأدنى للعرض — الشعار الكامل (ديجيتال)</span>
+    </div>
+    <div class="min-card reveal d2">
+      <img src="PC%20icon%20Color.svg" alt="" style="height:24px">
+      <span class="min-val">32px</span>
+      <span class="min-lbl">الحد الأدنى للأيقونة (ديجيتال)</span>
+    </div>
+    <div class="min-card reveal d3">
+      <img src="Logo%20with%20slogan.svg" alt="">
+      <span class="min-val">25mm</span>
+      <span class="min-lbl">الحد الأدنى للعرض — مطبوعات</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 06 — USAGE PATTERNS ===== -->
+<section class="section" id="patterns">
+  <span class="section-label reveal">06 / USAGE PATTERNS</span>
+  <h2 class="section-heading reveal">أنماط الاستخدام المشترك</h2>
+  <p class="section-desc reveal">تحدد هذه الأنماط كيفية ظهور العلامات التجارية معًا في مختلف السياقات لضمان الاتساق البصري.</p>
+
+  <div class="pattern-grid">
+    <!-- Pattern A -->
+    <div class="pattern-card reveal d1">
+      <div class="pattern-vis">
+        <span class="pattern-badge">PATTERN A</span>
+        <img src="Logo%20with%20slogan.svg" style="max-height:50px" alt="">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+          <img src="Saudi%20Projects%20icon%20color.svg" style="max-height:30px" alt="">
+          <span style="font-family:'Inter';font-size:.5rem;color:#999;letter-spacing:1px">مشاريع السعودية</span>
+        </div>
       </div>
-      <div class="context-info">
+      <div class="pattern-info">
+        <h3>النمط A — الهيمنة الأم</h3>
+        <p>تظهر مشيد كعلامة رئيسية بحجم أكبر مع ظهور العلامة الفرعية بحجم أصغر كعنصر تابع.</p>
+      </div>
+    </div>
+
+    <!-- Pattern B -->
+    <div class="pattern-card reveal d2">
+      <div class="pattern-vis">
+        <span class="pattern-badge">PATTERN B</span>
+        <img src="Logo%20with%20slogan.svg" style="max-height:45px" alt="">
+        <div class="divider-v"></div>
+        <img src="Ar%20logo%20white%20BG.svg" style="max-height:45px" alt="">
+      </div>
+      <div class="pattern-info">
         <h3>النمط B — الظهور المتوازي</h3>
         <p>يُستخدم عند الحاجة لظهور "مشيد" كشريك رسمي متساوٍ في القوة البصرية مع العلامة التابعة.</p>
       </div>
     </div>
-    <div class="context-card reveal d2">
-      <div class="context-vis">
-        <div style="text-align:center;">
-          <p style="font-family:'Inter';font-size:10px;color:#999;margin-bottom:12px;letter-spacing:2px;">POWERED BY</p>
-          <img src="Asset%2013.svg" style="max-height:50px;" alt="SPARX">
+
+    <!-- Pattern C -->
+    <div class="pattern-card reveal d3">
+      <div class="pattern-vis">
+        <span class="pattern-badge">PATTERN C</span>
+        <div style="text-align:center">
+          <img src="Bisht.svg" style="max-height:45px;margin:0 auto" alt="">
+          <p style="font-family:'Inter';font-size:.55rem;color:#999;margin-top:8px;letter-spacing:1.5px">BY MASHEED</p>
         </div>
       </div>
-      <div class="context-info">
+      <div class="pattern-info">
+        <h3>النمط C — التأييد النصي</h3>
+        <p>تظهر العلامة الفرعية بشكل بارز مع إشارة نصية "By Masheed" لتأكيد الانتماء للعلامة الأم.</p>
+      </div>
+    </div>
+
+    <!-- Pattern D — FIXED: Now shows Masheed logo -->
+    <div class="pattern-card reveal d4">
+      <div class="pattern-vis">
+        <span class="pattern-badge">PATTERN D</span>
+        <div style="text-align:center">
+          <img src="Asset%2013.svg" style="max-height:35px;margin:0 auto 12px" alt="">
+          <div style="width:60px;height:1px;background:#ddd;margin:0 auto 10px"></div>
+          <p style="font-family:'Inter';font-size:.5rem;color:#999;margin-bottom:6px;letter-spacing:2px">POWERED BY</p>
+          <img src="Logo%20with%20slogan.svg" style="max-height:22px;margin:0 auto" alt="">
+        </div>
+      </div>
+      <div class="pattern-info">
         <h3>النمط D — التظهير الراعي</h3>
-        <p>يُطبق على المشاريع والفعاليات المستقلة التي تحمل شخصية بصرية قوية مع تأكيد رعاية مشيد.</p>
+        <p>يُطبق على المشاريع المستقلة ذات الشخصية البصرية القوية مع عبارة "Powered by" وشعار مشيد لتأكيد الرعاية.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========== CLOSING ========== -->
+<!-- ===== 07 — DO'S & DON'TS ===== -->
+<section class="section" id="rules">
+  <span class="section-label reveal">07 / DO'S & DON'TS</span>
+  <h2 class="section-heading reveal">الاستخدام الصحيح والخاطئ</h2>
+  <p class="section-desc reveal">يجب الالتزام بقواعد الاستخدام التالية لضمان سلامة العلامة التجارية واتساقها في جميع التطبيقات.</p>
+
+  <div class="rules-grid">
+    <div class="rule-card do reveal d1">
+      <div class="rule-prev">
+        <span class="rule-tag">✓ صحيح</span>
+        <img src="Logo%20with%20slogan.svg" style="max-height:50px" alt="">
+      </div>
+      <div class="rule-desc">استخدم الشعار بأبعاده الأصلية مع المساحة الآمنة المحددة</div>
+    </div>
+
+    <div class="rule-card dont reveal d2">
+      <div class="rule-prev">
+        <span class="rule-tag">✗ خاطئ</span>
+        <img src="Logo%20with%20slogan.svg" style="max-height:50px;transform:scaleX(1.4)" alt="">
+      </div>
+      <div class="rule-desc">لا تقم بتمديد أو ضغط الشعار أو تغيير أبعاده النسبية</div>
+    </div>
+
+    <div class="rule-card do reveal d3">
+      <div class="rule-prev" style="background:#141414">
+        <span class="rule-tag">✓ صحيح</span>
+        <img src="Masheed%20White.svg" style="max-height:40px" alt="">
+      </div>
+      <div class="rule-desc">استخدم النسخة البيضاء على الخلفيات الداكنة</div>
+    </div>
+
+    <div class="rule-card dont reveal d4">
+      <div class="rule-prev" style="background:linear-gradient(45deg,#e74c3c,#f39c12)">
+        <span class="rule-tag">✗ خاطئ</span>
+        <img src="Logo%20with%20slogan.svg" style="max-height:40px;opacity:.7" alt="">
+      </div>
+      <div class="rule-desc">لا تضع الشعار على خلفيات مزدحمة أو ملونة بشكل يقلل الوضوح</div>
+    </div>
+
+    <div class="rule-card do reveal d5">
+      <div class="rule-prev">
+        <span class="rule-tag">✓ صحيح</span>
+        <div style="display:flex;align-items:center;gap:20px">
+          <img src="Logo%20with%20slogan.svg" style="max-height:35px" alt="">
+          <div class="divider-v" style="height:30px;background:#ccc"></div>
+          <img src="Bisht.svg" style="max-height:35px" alt="">
+        </div>
+      </div>
+      <div class="rule-desc">استخدم الفاصل العمودي عند وضع علامتين بجانب بعضهما</div>
+    </div>
+
+    <div class="rule-card dont reveal d6">
+      <div class="rule-prev">
+        <span class="rule-tag">✗ خاطئ</span>
+        <img src="Logo%20with%20slogan.svg" style="max-height:50px;filter:hue-rotate(90deg) saturate(2)" alt="">
+      </div>
+      <div class="rule-desc">لا تغيّر ألوان الشعار أو تطبّق عليه فلاتر غير معتمدة</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 08 — APPLICATIONS ===== -->
+<section class="section" id="apps">
+  <span class="section-label reveal">08 / BRAND APPLICATIONS</span>
+  <h2 class="section-heading reveal">تطبيقات العلامة</h2>
+  <p class="section-desc reveal">أمثلة توضيحية لتطبيق الهوية البصرية عبر مختلف نقاط التواصل والوسائط.</p>
+
+  <div class="app-grid">
+    <!-- Business Card -->
+    <div class="app-card reveal d1">
+      <div class="app-mock" style="background:#1a1a1a">
+        <div class="mock-bizcard">
+          <img src="Masheed%20White.svg" alt="">
+          <div class="mock-bizcard-lines"><span></span><span></span><span></span></div>
+        </div>
+      </div>
+      <div class="app-label">بطاقة العمل</div>
+    </div>
+
+    <!-- Letterhead -->
+    <div class="app-card reveal d2">
+      <div class="app-mock" style="background:#f0f0ea">
+        <div class="mock-letter">
+          <img src="Logo%20with%20slogan.svg" alt="">
+          <div class="mock-letter-lines"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="mock-letter-footer"><span></span><span></span></div>
+        </div>
+      </div>
+      <div class="app-label">الورق الرسمي</div>
+    </div>
+
+    <!-- Social Media -->
+    <div class="app-card reveal d3">
+      <div class="app-mock" style="background:#111">
+        <div class="mock-social">
+          <div class="mock-social-header">
+            <div class="mock-social-avatar"></div>
+            <span class="mock-social-name">@masheed</span>
+          </div>
+          <div class="mock-social-body">
+            <img src="Masheed%20White.svg" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="app-label">منصات التواصل</div>
+    </div>
+
+    <!-- Mobile App -->
+    <div class="app-card reveal d4">
+      <div class="app-mock" style="background:#0e0e0e">
+        <div class="mock-phone">
+          <div class="mock-phone-screen">
+            <img src="Masheed%20White.svg" alt="">
+            <div class="mock-phone-lines"><span></span><span style="width:70%"></span><span style="width:50%"></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="app-label">تطبيق الجوال</div>
+    </div>
+
+    <!-- Merchandise -->
+    <div class="app-card reveal d5">
+      <div class="app-mock" style="background:#161616">
+        <div class="mock-merch">
+          <img src="Masheed%20White.svg" alt="">
+        </div>
+      </div>
+      <div class="app-label">الهدايا والبضائع</div>
+    </div>
+
+    <!-- Website -->
+    <div class="app-card reveal d6">
+      <div class="app-mock" style="background:#0a0a0a">
+        <div class="mock-web">
+          <div class="mock-web-bar"><div class="mock-web-dot"></div><div class="mock-web-dot"></div><div class="mock-web-dot"></div></div>
+          <div class="mock-web-content">
+            <img src="Masheed%20White.svg" alt="">
+            <div class="mock-web-lines"><span></span><span></span></div>
+            <div class="mock-web-btn">اكتشف المزيد</div>
+          </div>
+        </div>
+      </div>
+      <div class="app-label">الموقع الإلكتروني</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CLOSING ===== -->
 <div class="closing">
   <div class="closing-text reveal">
     <div class="end-badge">END OF DOCUMENT</div>
@@ -565,29 +988,31 @@ img{max-width:100%;display:block}
 </div>
 
 <script>
-// Nav show on scroll
-const nav = document.getElementById('nav');
-let lastScroll = 0;
-window.addEventListener('scroll', () => {
-  const y = window.scrollY;
-  if (y > window.innerHeight * 0.5) {
-    nav.classList.add('show');
-  } else {
-    nav.classList.remove('show');
-  }
-  lastScroll = y;
+// Nav
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('show',window.scrollY>window.innerHeight*.5);
 });
 
-// Scroll reveal
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-    }
+// Active nav link
+const sections=document.querySelectorAll('.section');
+const navLinks=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{
+    if(window.scrollY>=s.offsetTop-200) cur=s.id;
   });
-}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  navLinks.forEach(a=>{
+    a.classList.remove('active');
+    if(a.getAttribute('href')==='#'+cur) a.classList.add('active');
+  });
+});
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+// Reveal
+const obs=new IntersectionObserver(e=>{
+  e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')});
+},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
 
 </body>
